@@ -126,8 +126,8 @@ dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; font-variant-numeric:
 .miss { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 6px; text-align: start; }
 .miss li { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; overflow-wrap: anywhere; }
 .misshead { margin: 18px 0 0; font-weight: 700; text-align: start; }
-.mapbox { position: relative; width: 100%; height: clamp(300px, 58vh, 520px); margin: 10px 0 0; background: var(--sea); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; }
-.mapbox svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mapbox { position: relative; width: 100%; height: clamp(190px, 54vw, 360px); margin: 10px 0 0; background: var(--sea); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; }
+.mapbox > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .land { fill: var(--land); stroke: var(--landline); }
 .land.good { fill: var(--good); }
 .land.bad { fill: var(--bad); }
@@ -170,9 +170,6 @@ dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; font-variant-numeric:
 .fimg.mini { display: inline-block; width: 28px; vertical-align: middle; margin-inline-end: 8px; }
 .femoji.mini { font-size: 1.15rem; margin-inline-end: 8px; vertical-align: middle; }
 </style>
-</head>
-<body>
-
 
 <main>
   <div class="top">
@@ -1225,6 +1222,52 @@ function mergePS(g) {
   }
   g.features = out;
 }
+/* Shapes that cross the 180th meridian (far-east Russia, Fiji, the Aleutians) are cut in two so no edge is drawn across the whole map. */
+function fixDateline(g) {
+  function jumps(ring) { for (var i = 1; i < ring.length; i++) if (Math.abs(ring[i][0] - ring[i - 1][0]) > 180) return true; return false; }
+  function unwrap(ring) {
+    var out = [[ring[0][0], ring[0][1]]];
+    for (var i = 1; i < ring.length; i++) {
+      var lon = ring[i][0], prev = out[i - 1][0];
+      while (lon - prev > 180) lon -= 360;
+      while (lon - prev < -180) lon += 360;
+      out.push([lon, ring[i][1]]);
+    }
+    return out;
+  }
+  function clip(ring, edge, keepGreater) {
+    var out = [], n = ring.length, i;
+    function inside(p) { return keepGreater ? p[0] >= edge : p[0] <= edge; }
+    for (i = 0; i < n; i++) {
+      var a = ring[i], b = ring[(i + 1) % n], ia = inside(a), ib = inside(b);
+      if (ia) out.push(a);
+      if (ia !== ib) { var tt = (edge - a[0]) / (b[0] - a[0]); out.push([edge, a[1] + tt * (b[1] - a[1])]); }
+    }
+    return out;
+  }
+  function pieces(ring) {
+    var u = unwrap(ring), res = [];
+    if (Math.abs(u[u.length - 1][0] - u[0][0]) > 180) return null;
+    var open = u.slice(0, u.length - 1);
+    [-360, 0, 360].forEach(function (sh) {
+      var c = clip(clip(open.map(function (p) { return [p[0] + sh, p[1]]; }), -180, true), 180, false);
+      if (c.length >= 3) { c.push([c[0][0], c[0][1]]); res.push(c); }
+    });
+    return res;
+  }
+  g.features.forEach(function (f) {
+    if (!f.geometry) return;
+    var polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates, out = [], changed = false;
+    polys.forEach(function (poly) {
+      if (!poly[0] || !jumps(poly[0])) { out.push(poly); return; }
+      var pc = pieces(poly[0]);
+      if (!pc || !pc.length) { out.push(poly); return; }
+      changed = true;
+      pc.forEach(function (r) { out.push([r]); });
+    });
+    if (changed) f.geometry = { type: "MultiPolygon", coordinates: out };
+  });
+}
 var geoCache = null, geoWait = null;
 var NUM = {};
 "533:AW;004:AF;024:AO;660:AI;248:AX;008:AL;020:AD;784:AE;032:AR;051:AM;016:AS;010:AQ;260:TF;028:AG;036:AU;040:AT;031:AZ;108:BI;056:BE;204:BJ;535:BQ;854:BF;050:BD;100:BG;048:BH;044:BS;070:BA;652:BL;112:BY;084:BZ;060:BM;068:BO;076:BR;052:BB;096:BN;064:BT;074:BV;072:BW;140:CF;124:CA;166:CC;756:CH;152:CL;156:CN;384:CI;120:CM;180:CD;178:CG;184:CK;170:CO;174:KM;132:CV;188:CR;192:CU;531:CW;162:CX;136:KY;196:CY;203:CZ;276:DE;262:DJ;212:DM;208:DK;214:DO;012:DZ;218:EC;818:EG;232:ER;732:EH;724:ES;233:EE;231:ET;246:FI;242:FJ;238:FK;250:FR;234:FO;583:FM;266:GA;826:GB;268:GE;831:GG;288:GH;292:GI;324:GN;312:GP;270:GM;624:GW;226:GQ;300:GR;308:GD;304:GL;320:GT;254:GF;316:GU;328:GY;344:HK;334:HM;340:HN;191:HR;332:HT;348:HU;360:ID;833:IM;356:IN;086:IO;372:IE;364:IR;368:IQ;352:IS;376:IL;380:IT;388:JM;832:JE;400:JO;392:JP;398:KZ;404:KE;417:KG;116:KH;296:KI;659:KN;410:KR;414:KW;418:LA;422:LB;430:LR;434:LY;662:LC;438:LI;144:LK;426:LS;440:LT;442:LU;428:LV;446:MO;663:MF;504:MA;492:MC;498:MD;450:MG;462:MV;484:MX;584:MH;807:MK;466:ML;470:MT;104:MM;499:ME;496:MN;580:MP;508:MZ;478:MR;500:MS;474:MQ;480:MU;454:MW;458:MY;175:YT;516:NA;540:NC;562:NE;574:NF;566:NG;558:NI;570:NU;528:NL;578:NO;524:NP;520:NR;554:NZ;512:OM;586:PK;591:PA;612:PN;604:PE;608:PH;585:PW;598:PG;616:PL;630:PR;408:KP;620:PT;600:PY;275:PS;258:PF;634:QA;638:RE;642:RO;643:RU;646:RW;682:SA;729:SD;686:SN;702:SG;239:GS;654:SH;744:SJ;090:SB;694:SL;222:SV;674:SM;706:SO;666:PM;688:RS;728:SS;678:ST;740:SR;703:SK;705:SI;752:SE;748:SZ;534:SX;690:SC;760:SY;796:TC;148:TD;768:TG;764:TH;762:TJ;772:TK;795:TM;626:TL;776:TO;780:TT;788:TN;792:TR;798:TV;158:TW;834:TZ;800:UG;804:UA;581:UM;858:UY;840:US;860:UZ;336:VA;670:VC;862:VE;092:VG;850:VI;704:VN;548:VU;876:WF;882:WS;887:YE;710:ZA;894:ZM;716:ZW".split(";").forEach(function (s) { var a = s.split(":"); NUM[a[0]] = a[1]; });
@@ -1252,7 +1295,7 @@ function loadGeo(done) {
   geoWait = [done];
   loadGeoRaw(function (g) {
     var w = geoWait; geoWait = null;
-    if (g) { mergePS(g); geoCache = g; }
+    if (g) { mergePS(g); fixDateline(g); geoCache = g; }
     w.forEach(function (f) { f(g); });
   });
 }
@@ -1290,7 +1333,7 @@ function loadGeoRaw(done) {
 }
 
 function MapView() {
-  var NS = "http://www.w3.org/2000/svg", K = 180;
+  var NS = "http://www.w3.org/2000/svg", K = 3;
   var node = el("div", "mapbox");
   var msgEl = el("div", "mapmsg");
   node.appendChild(msgEl);
@@ -1302,12 +1345,7 @@ function MapView() {
   var BY = {};
   DATA.forEach(function (d) { BY[d.iso] = d; });
 
-  function proj(lon, lat) {
-    var l = lon * Math.PI / 180, p = lat * Math.PI / 180, p2 = p * p, p4 = p2 * p2;
-    var x = l * (0.8707 - 0.131979 * p2 + p4 * (-0.013791 + p4 * (0.003971 * p2 - 0.001529 * p4)));
-    var y = p * (1.007226 + p2 * (0.015085 + p4 * (-0.044475 + 0.028874 * p2 - 0.005916 * p4)));
-    return [x * K, -y * K];
-  }
+  function proj(lon, lat) { return [lon * K, -lat * K]; }
   function ringPath(ring, ox, oy) {
     var n = ring.length, pts = [], lx = 0, ly = 0, i, out = "";
     if (n < 2) return "";
@@ -1356,6 +1394,7 @@ function MapView() {
       });
       items.push({ id: id, name: f.properties.name, polys: pp });
     });
+    minX = -180 * K; maxX = 180 * K; minY = -84 * K; maxY = 58 * K;
     W = maxX - minX; H = maxY - minY; ox = minX; oy = minY;
 
     svg = mkSvg("svg", { role: "img", "aria-label": t("mapAria") });
@@ -1431,7 +1470,7 @@ function MapView() {
     var first = !cw, oldMin = minS;
     cw = w; ch = h;
     svg.setAttribute("viewBox", "0 0 " + w + " " + h);
-    minS = w / W; maxS = minS * 80;
+    minS = w / W; maxS = minS * 120;
     S = first ? minS : Math.max(minS, Math.min(maxS, S / oldMin * minS));
     if (first) { tx = 0; ty = 0; }
     clampPan(); dotS = 0; apply();
@@ -1475,17 +1514,11 @@ function MapView() {
   function clearMarks() { marks.forEach(function (m) { m[0].classList.remove(m[1]); }); marks = []; }
   function tappedName(id) { return BY[id] ? nameOf(BY[id]) : id === "NI" ? (lang === "ar" ? "أيرلندا الشمالية" : "Northern Ireland") : (feats[id] ? feats[id].name : id); }
 
-  function yOf(la) { var p = la * Math.PI / 180, p2 = p * p, p4 = p2 * p2; return p * (1.007226 + p2 * (0.015085 + p4 * (-0.044475 + 0.028874 * p2 - 0.005916 * p4))); }
-  function xOf(lo, la) { var l = lo * Math.PI / 180, p = la * Math.PI / 180, p2 = p * p, p4 = p2 * p2; return l * (0.8707 - 0.131979 * p2 + p4 * (-0.013791 + p4 * (0.003971 * p2 - 0.001529 * p4))); }
   /* The world map has one shape for Britain, so a tap on it is sorted into England, Scotland, Wales or Northern Ireland by its position. The borders are approximate. */
   function britainRegion(cx, cy) {
     var r = node.getBoundingClientRect();
     var px = (cx - r.left - tx) / S + ox, py = (cy - r.top - ty) / S + oy;
-    var yy = -py / K, xx = px / K, a = -90, b = 90, i, m;
-    for (i = 0; i < 40; i++) { m = (a + b) / 2; if (yOf(m) < yy) a = m; else b = m; }
-    var la = (a + b) / 2; a = -180; b = 180;
-    for (i = 0; i < 40; i++) { m = (a + b) / 2; if (xOf(m, la) < xx) a = m; else b = m; }
-    var lo = (a + b) / 2;
+    var lo = px / K, la = -py / K;
     if (lo < -5.3 && la < 55.32) return "NI";
     if (la > 54.6 && lo < -3.05) return "GB-SCT";
     var lb = lo > -2.0 ? 55.78 : 54.97 + (lo + 3.05) * 0.771;
