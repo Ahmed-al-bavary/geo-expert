@@ -259,7 +259,7 @@ dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; font-variant-numeric:
     </div>
     <div class="tools">
       <button class="themebtn" id="lbbtn" type="button"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4"/></svg></button>
-      <button class="themebtn" id="themebtn" type="button"></button>
+      <button class="themebtn" id="setbtn" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
       <button class="langbtn" id="langbtn" type="button">English</button>
     </div>
   </div>
@@ -511,6 +511,11 @@ var STR = {
     lbOff: "الترتيب العالمي غير مفعّل بعد.", lbFail: "تعذّر الاتصال بالترتيب. حاول لاحقاً.", lbEmpty: "لا توجد نتائج بعد. كن الأول!",
     lbYourRank: "ترتيبك: {r} من {n}", lbNote: "يُحسب أفضل رقم لكل لاعب، والترتيب بالنتيجة ثم بالوقت الأقل. اليومي لهذا اليوم فقط، والباقي لاختبار جميع الدول.",
     lbSent: "أُرسلت نتيجتك إلى الترتيب العالمي", lbNeedName: "اكتب اسمك في صفحة الترتيب لتُرسل نتيجتك", lbBtn: "عرض الترتيب", close: "إغلاق",
+    lArea: "المساحة", lLandmark: "أشهر معلم", lNeighbors: "الدول المجاورة", noNeighbors: "لا حدود برية", kmUnit: "كم²",
+    hintBtn: "تلميح (−½ نقطة)", hintIs: "الإجابة تبدأ بالحرف: {l}", hintUsed: "استخدمت تلميحاً",
+    missChip: "أخطائي ({n})", missInfo: "اختبار من الدول التي أخطأت فيها سابقاً، ولا يدخل في الأرقام القياسية أو الترتيب.",
+    streakDays: "أيام متتالية: {n}", streakBest: "أفضل سلسلة: {n}", streakStart: "ابدأ سلسلتك اليوم!",
+    setTitle: "الإعدادات", setTheme: "المظهر", setSound: "الأصوات", setVib: "الاهتزاز", thDark: "داكن", thLight: "فاتح", thAuto: "تلقائي", on: "تشغيل", off: "إيقاف",
     navGuide: "الدليل", navDaily: "اليومي", navFlags: "الأعلام", navCaps: "العواصم", navMap: "الخريطة",
     tabGuide: "الدليل", tabFlags: "اختبار الأعلام", tabCaps: "اختبار العواصم",
     ph: "ابحث باسم الدولة أو العاصمة، بالعربية أو الإنجليزية",
@@ -553,6 +558,11 @@ var STR = {
     lbOff: "The global ranking isn't switched on yet.", lbFail: "Couldn't reach the ranking. Try again later.", lbEmpty: "No results yet. Be the first!",
     lbYourRank: "Your rank: {r} of {n}", lbNote: "Only each player's best result counts; ranked by score, then by the fastest time. Daily is today only; the others are the all-countries quizzes.",
     lbSent: "Your result was sent to the global ranking", lbNeedName: "Enter your name on the ranking page to send your result", lbBtn: "View ranking", close: "Close",
+    lArea: "Area", lLandmark: "Famous landmark", lNeighbors: "Neighbours", noNeighbors: "No land borders", kmUnit: "km²",
+    hintBtn: "Hint (−½ point)", hintIs: "The answer starts with: {l}", hintUsed: "You used a hint",
+    missChip: "My mistakes ({n})", missInfo: "A quiz of the countries you got wrong before. It doesn't count towards records or the ranking.",
+    streakDays: "Day streak: {n}", streakBest: "Best streak: {n}", streakStart: "Start your streak today!",
+    setTitle: "Settings", setTheme: "Appearance", setSound: "Sounds", setVib: "Vibration", thDark: "Dark", thLight: "Light", thAuto: "Auto", on: "On", off: "Off",
     navGuide: "Guide", navDaily: "Daily", navFlags: "Flags", navCaps: "Capitals", navMap: "Map",
     tabGuide: "Guide", tabFlags: "Flag quiz", tabCaps: "Capitals quiz",
     ph: "Search by country or capital, in Arabic or English",
@@ -596,6 +606,208 @@ function t(k, v) {
 function nCount(n) { return lang === "ar" && n <= 10 ? t("nC10", { n: n }) : t("nC", { n: n }); }
 
 var CONT = { F: { ar: "أفريقيا", en: "Africa" }, A: { ar: "آسيا", en: "Asia" }, E: { ar: "أوروبا", en: "Europe" }, N: { ar: "أمريكا الشمالية والوسطى", en: "North & Central America" }, S: { ar: "أمريكا اللاتينية", en: "Latin America" }, O: { ar: "أوقيانوسيا", en: "Oceania" } };
+/* Extra facts per country: ISO | area (km²) | landmark (ar) | landmark (en) | land neighbours (ISO codes) */
+var INFO = {};
+(`DZ|2381741|القصبة (الجزائر العاصمة)|Casbah of Algiers|TN,LY,NE,ML,MR,MA
+EG|1002450|أهرامات الجيزة|Pyramids of Giza|LY,SD,PS
+LY|1759540|لبدة الكبرى|Leptis Magna|TN,DZ,NE,TD,SD,EG
+TN|163610|آثار قرطاج|Ruins of Carthage|DZ,LY
+MA|446550|مسجد الحسن الثاني|Hassan II Mosque|DZ
+SD|1861484|أهرامات مروي|Pyramids of Meroë|EG,LY,TD,CF,SS,ET,ER
+MR|1030700|مدينة شنقيط|Chinguetti|DZ,ML,SN
+ML|1240192|جامع جنيه الكبير|Great Mosque of Djenné|DZ,NE,BF,CI,GN,SN,MR
+NE|1267000|جبال آير|Aïr Mountains|DZ,LY,TD,NG,BJ,BF,ML
+TD|1284000|بحيرة تشاد|Lake Chad|LY,SD,CF,CM,NG,NE
+SN|196722|البحيرة الوردية (ريتبا)|Lake Retba (Pink Lake)|MR,ML,GN,GW,GM
+GM|11295|جزيرة كونتا كينتي|Kunta Kinteh Island|SN
+GW|36125|أرخبيل بيجاغوس|Bijagós Archipelago|SN,GN
+GN|245857|جبل نيمبا|Mount Nimba|GW,SN,ML,CI,LR,SL
+SL|71740|جزيرة بنس|Bunce Island|GN,LR
+LR|111369|منتزه سابو الوطني|Sapo National Park|SL,GN,CI
+CI|322463|كاتدرائية السلام في ياموسوكرو|Basilica of Our Lady of Peace|LR,GN,ML,BF,GH
+BF|272967|آثار لوروبيني|Ruins of Loropéni|ML,NE,BJ,TG,GH,CI
+GH|238533|قلعة كيب كوست|Cape Coast Castle|CI,BF,TG
+TG|56785|قرية كوتاماكو|Koutammakou|GH,BF,BJ
+BJ|114763|قصور أبومي الملكية|Royal Palaces of Abomey|TG,BF,NE,NG
+NG|923768|صخرة أولومو|Olumo Rock|BJ,NE,TD,CM
+CM|475442|جبل الكاميرون|Mount Cameroon|NG,TD,CF,CG,GA,GQ
+GQ|28051|قمة باسيلي (بيوكو)|Pico Basilé|CM,GA
+GA|267667|منتزه لوانغو الوطني|Loango National Park|GQ,CM,CG
+CG|342000|منتزه أودزالا-كوكوا|Odzala-Kokoua National Park|GA,CM,CF,CD,AO
+CD|2344858|منتزه فيرونغا الوطني|Virunga National Park|CG,CF,SS,UG,RW,BI,TZ,ZM,AO
+CF|622984|محمية دزانغا-سانغا|Dzanga-Sangha Reserve|TD,SD,SS,CD,CG,CM
+AO|1246700|شلالات كالاندولا|Calandula Falls|NA,ZM,CD,CG
+ST|964|قمة بيكو كاو غراندي|Pico Cão Grande|-
+CV|4033|بركان بيكو دو فوغو|Pico do Fogo volcano|-
+ET|1104300|كنائس لاليبيلا المنحوتة|Rock-Hewn Churches of Lalibela|ER,DJ,SO,KE,SS,SD
+ER|117600|مدينة أسمرة التاريخية|Asmara|SD,ET,DJ
+DJ|23200|بحيرة عسل|Lake Assal|ER,ET,SO
+SO|637657|كهوف لاس غيل|Laas Geel|DJ,ET,KE
+KE|580367|جبل كينيا|Mount Kenya|SO,ET,SS,UG,TZ
+UG|241550|منابع النيل (جينجا)|Source of the Nile (Jinja)|SS,KE,TZ,RW,CD
+TZ|945087|جبل كليمنجارو|Mount Kilimanjaro|KE,UG,RW,BI,CD,ZM,MW,MZ
+RW|26338|منتزه البراكين الوطني|Volcanoes National Park|UG,TZ,BI,CD
+BI|27834|بحيرة تنجانيقا|Lake Tanganyika|RW,TZ,CD
+SS|644329|مستنقعات السد|Sudd wetlands|SD,ET,KE,UG,CD,CF
+MW|118484|بحيرة ملاوي|Lake Malawi|TZ,MZ,ZM
+ZM|752612|شلالات فيكتوريا|Victoria Falls|CD,TZ,MW,MZ,ZW,BW,NA,AO
+ZW|390757|زيمبابوي العظمى|Great Zimbabwe|ZM,MZ,ZA,BW
+MZ|801590|جزيرة موزمبيق|Island of Mozambique|TZ,MW,ZM,ZW,ZA,SZ
+MG|587041|غابة تسينغي دي بيمارآها|Tsingy de Bemaraha|-
+MU|2040|جبل لو مورن|Le Morne Brabant|-
+SC|459|شاطئ أنس سورس دارجان|Anse Source d'Argent|-
+KM|1862|بركان كارتالا|Mount Karthala|-
+NA|825615|كثبان سوسوسفلاي|Sossusvlei dunes|AO,ZM,BW,ZA
+BW|581730|دلتا أوكافانغو|Okavango Delta|NA,ZM,ZW,ZA
+ZA|1221037|جبل الطاولة|Table Mountain|NA,BW,ZW,MZ,SZ,LS
+LS|30355|شلالات ماليتسونيان|Maletsunyane Falls|ZA
+SZ|17364|محمية ملوان للحياة البرية|Mlilwane Wildlife Sanctuary|ZA,MZ
+SA|2149690|المسجد الحرام (مكة المكرمة)|Masjid al-Haram (Mecca)|JO,IQ,KW,QA,AE,OM,YE
+YE|527968|مدينة شبام حضرموت|Shibam Hadramawt|SA,OM
+OM|309500|جامع السلطان قابوس الأكبر|Sultan Qaboos Grand Mosque|YE,SA,AE
+AE|83600|برج خليفة|Burj Khalifa|SA,OM
+QA|11586|متحف الفن الإسلامي|Museum of Islamic Art|SA
+BH|780|قلعة البحرين|Qal'at al-Bahrain|-
+KW|17818|أبراج الكويت|Kuwait Towers|IQ,SA
+IQ|438317|بابل الأثرية|Ancient Babylon|KW,SA,JO,SY,TR,IR
+SY|185180|قلعة حلب|Citadel of Aleppo|TR,IQ,JO,LB
+LB|10452|مغارة جعيتا|Jeita Grotto|SY
+JO|89342|البتراء|Petra|SY,IQ,SA,PS
+PS|6020|المسجد الأقصى (القدس)|Al-Aqsa Mosque (Jerusalem)|JO,EG
+TR|783562|آيا صوفيا|Hagia Sophia|GR,BG,GE,AM,AZ,IR,IQ,SY
+IR|1648195|تخت جمشيد|Persepolis|TR,AM,AZ,TM,AF,PK,IQ
+AF|652864|مئذنة جام|Minaret of Jam|PK,IR,TM,UZ,TJ,CN
+PK|881913|مسجد بادشاهي (لاهور)|Badshahi Mosque|IN,AF,IR,CN
+IN|3287263|تاج محل|Taj Mahal|PK,CN,NP,BT,BD,MM
+BD|147570|غابات سندربان|Sundarbans|IN,MM
+LK|65610|صخرة سيجيريا|Sigiriya|-
+NP|147181|جبل إفرست|Mount Everest|IN,CN
+BT|38394|دير تاكتسانغ (عش النمر)|Tiger's Nest Monastery|IN,CN
+MV|298|مسجد الجمعة القديم (ماليه)|Hukuru Miskiy (Malé)|-
+MM|676578|معبد شويداغون|Shwedagon Pagoda|BD,IN,CN,LA,TH
+TH|513120|القصر الكبير (بانكوك)|Grand Palace (Bangkok)|MM,LA,KH,MY
+LA|236800|لوانغ برابانغ|Luang Prabang|MM,CN,VN,KH,TH
+KH|181035|أنغكور وات|Angkor Wat|TH,LA,VN
+VN|331212|خليج ها لونغ|Ha Long Bay|CN,LA,KH
+MY|330803|برجا بتروناس|Petronas Towers|TH,ID,BN
+SG|734|حدائق الخليج|Gardens by the Bay|-
+ID|1904569|معبد بوروبودور|Borobudur|MY,PG,TL
+BN|5765|مسجد عمر علي سيف الدين|Omar Ali Saifuddien Mosque|MY
+PH|300000|مدرجات الأرز في بانوي|Banaue Rice Terraces|-
+TL|14919|تمثال المسيح الملك في ديلي|Cristo Rei of Dili|ID
+CN|9596961|سور الصين العظيم|Great Wall of China|RU,MN,KZ,KG,TJ,AF,PK,IN,NP,BT,MM,LA,VN,KP
+JP|377975|جبل فوجي|Mount Fuji|-
+KR|100210|قصر جيونغبوكغونغ|Gyeongbokgung Palace|KP
+KP|120538|جبل بايكتو|Mount Paektu|KR,CN,RU
+MN|1564116|تمثال جنكيز خان|Genghis Khan Equestrian Statue|RU,CN
+KZ|2724900|قاعدة بايكونور الفضائية|Baikonur Cosmodrome|RU,CN,KG,UZ,TM
+UZ|448978|ميدان الريجستان (سمرقند)|Registan (Samarkand)|KZ,KG,TJ,AF,TM
+TM|488100|فوهة الغاز في دارفازا|Darvaza gas crater|KZ,UZ,AF,IR
+KG|199951|بحيرة إيسيك كول|Issyk-Kul|KZ,UZ,TJ,CN
+TJ|143100|طريق بامير السريع|Pamir Highway|KG,UZ,AF,CN
+AZ|86600|برج العذراء (باكو)|Maiden Tower (Baku)|RU,GE,AM,IR,TR
+AM|29743|دير غيغارد|Geghard Monastery|GE,AZ,IR,TR
+GE|69700|كنيسة الثالوث في غيرغيتي|Gergeti Trinity Church|RU,AZ,AM,TR
+RU|17098246|الساحة الحمراء|Red Square|NO,FI,EE,LV,LT,PL,BY,UA,GE,AZ,KZ,MN,CN,KP
+UA|603550|كاتدرائية القديسة صوفيا (كييف)|St. Sophia Cathedral (Kyiv)|BY,RU,MD,RO,HU,SK,PL
+BY|207600|قلعة مير|Mir Castle|RU,UA,PL,LT,LV
+MD|33851|أوريهيول فيكي|Orheiul Vechi|UA,RO
+PL|312696|منجم الملح في فيليتشكا|Wieliczka Salt Mine|DE,CZ,SK,UA,BY,LT,RU
+LT|65300|تل الصلبان|Hill of Crosses|LV,BY,PL,RU
+LV|64589|مدينة ريغا القديمة|Old Town of Riga|EE,RU,BY,LT
+EE|45228|مدينة تالين القديمة|Old Town of Tallinn|LV,RU
+FI|338455|قلعة سوومينلينا|Suomenlinna Fortress|SE,NO,RU
+SE|450295|متحف فاسا|Vasa Museum|NO,FI
+NO|385207|مضيق جيرانجر|Geirangerfjord|SE,FI,RU
+DK|42943|تمثال حورية البحر الصغيرة|The Little Mermaid|DE
+IS|103000|البحيرة الزرقاء|Blue Lagoon|-
+IE|70273|جروف موهر|Cliffs of Moher|-
+GB-ENG|130279|بيغ بن|Big Ben|GB-SCT,GB-WLS
+GB-SCT|77933|قلعة إدنبرة|Edinburgh Castle|GB-ENG
+GB-WLS|20779|قلعة كارنارفون|Caernarfon Castle|GB-ENG
+FR|551695|برج إيفل|Eiffel Tower|BE,LU,DE,CH,IT,MC,AD,ES
+DE|357022|بوابة براندنبورغ|Brandenburg Gate|DK,PL,CZ,AT,CH,FR,LU,BE,NL
+NL|41850|طواحين كيندردايك|Kinderdijk windmills|BE,DE
+BE|30528|ساحة غراند بلاس|Grand Place|NL,DE,LU,FR
+LU|2586|كازمات بوك|Bock Casemates|BE,DE,FR
+CH|41285|جبل ماترهورن|Matterhorn|DE,FR,IT,AT,LI
+AT|83871|قصر شونبرون|Schönbrunn Palace|DE,CZ,SK,HU,SI,IT,CH,LI
+LI|160|قلعة فادوتس|Vaduz Castle|CH,AT
+IT|301340|الكولوسيوم|Colosseum|FR,CH,AT,SI,SM,VA
+ES|505990|ساغرادا فاميليا|Sagrada Família|PT,FR,AD
+PT|92212|برج بيليم|Belém Tower|ES
+AD|468|وادي مادريو-بيرافيتا-كلارور|Madriu-Perafita-Claror Valley|ES,FR
+MC|2.02|كازينو مونتي كارلو|Monte Carlo Casino|FR
+SM|61|قلعة غوايتا|Guaita Fortress|IT
+VA|0.44|كاتدرائية القديس بطرس|St. Peter's Basilica|IT
+MT|316|مدينة فاليتا|Valletta|-
+GR|131957|الأكروبوليس (أثينا)|Acropolis of Athens|AL,MK,BG,TR
+AL|28748|مدينة برات (مدينة الألف نافذة)|Berat (City of a Thousand Windows)|ME,XK,MK,GR
+MK|25713|بحيرة أوخريد|Lake Ohrid|XK,RS,BG,GR,AL
+RS|88361|قلعة بلغراد|Belgrade Fortress|HU,RO,BG,MK,XK,ME,BA,HR
+ME|13812|خليج كوتور|Bay of Kotor|HR,BA,RS,XK,AL
+HR|56594|مدينة دوبروفنيك القديمة|Old City of Dubrovnik|SI,HU,RS,BA,ME
+SI|20273|بحيرة بليد|Lake Bled|IT,AT,HU,HR
+BA|51209|الجسر القديم في موستار|Stari Most (Mostar)|HR,RS,ME
+XK|10887|دير غراتشانيتسا|Gračanica Monastery|RS,MK,AL,ME
+BG|110994|دير ريلا|Rila Monastery|RO,RS,MK,GR,TR
+RO|238397|قلعة بران|Bran Castle|UA,MD,BG,RS,HU
+HU|93028|مبنى البرلمان المجري|Hungarian Parliament Building|AT,SK,UA,RO,RS,HR,SI
+SK|49035|قلعة براتيسلافا|Bratislava Castle|CZ,PL,UA,HU,AT
+CZ|78871|قلعة براغ|Prague Castle|DE,PL,SK,AT
+CY|9251|صخرة أفروديت (بترا تو روميو)|Aphrodite's Rock (Petra tou Romiou)|-
+US|9833517|تمثال الحرية|Statue of Liberty|CA,MX
+CA|9984670|برج سي إن (تورنتو)|CN Tower (Toronto)|US
+MX|1964375|تشيتشن إيتزا|Chichén Itzá|US,GT,BZ
+GT|108889|تيكال|Tikal|MX,BZ,HN,SV
+BZ|22966|الحفرة الزرقاء العظيمة|Great Blue Hole|MX,GT
+HN|112492|آثار كوبان|Copán ruins|GT,SV,NI
+SV|21041|موقع خويا دي سيرين الأثري|Joya de Cerén|GT,HN
+NI|130373|كاتدرائية غرناطة (نيكاراغوا)|Granada Cathedral|HN,CR
+CR|51100|بركان أرينال|Arenal Volcano|NI,PA
+PA|75417|قناة بنما|Panama Canal|CR,CO
+CU|109884|هافانا القديمة|Old Havana|-
+JM|10991|شلالات دانز ريفر|Dunn's River Falls|-
+HT|27750|قلعة لافيريير|Citadelle Laferrière|DO
+DO|48671|المدينة الاستعمارية في سانتو دومينغو|Colonial City of Santo Domingo|HT
+BS|13943|جزر إكسوما|Exuma Cays|-
+BB|430|كهف هاريسون|Harrison's Cave|-
+TT|5128|بحيرة القار|Pitch Lake|-
+GD|344|شاطئ غراند أنس|Grand Anse Beach|-
+LC|616|قمتا بيتون|The Pitons|-
+VC|389|بركان لا سوفريير|La Soufrière volcano|-
+AG|442|حوض نيلسون لبناء السفن|Nelson's Dockyard|-
+DM|751|البحيرة المغلية|Boiling Lake|-
+KN|261|قلعة بريمستون هيل|Brimstone Hill Fortress|-
+CO|1141748|مدينة قرطاجنة القديمة|Old City of Cartagena|VE,BR,PE,EC,PA
+VE|912050|شلالات أنخيل|Angel Falls|CO,BR,GY
+EC|283561|جزر غالاباغوس|Galápagos Islands|CO,PE
+PE|1285216|ماتشو بيتشو|Machu Picchu|EC,CO,BR,BO,CL
+BO|1098581|ملاحة أويوني|Salar de Uyuni|PE,BR,PY,AR,CL
+BR|8515767|تمثال المسيح المخلّص|Christ the Redeemer|UY,AR,PY,BO,PE,CO,VE,GY,SR
+PY|406752|سد إيتايبو|Itaipu Dam|BO,BR,AR
+UY|176215|مدينة كولونيا ديل ساكرامنتو|Colonia del Sacramento|BR,AR
+AR|2780400|نهر بيريتو مورينو الجليدي|Perito Moreno Glacier|CL,BO,PY,BR,UY
+CL|756102|تماثيل موآي (جزيرة الفصح)|Moai of Easter Island|PE,BO,AR
+GY|214969|شلالات كايتور|Kaieteur Falls|SR,BR,VE
+SR|163820|وسط باراماريبو التاريخي|Historic Inner City of Paramaribo|GY,BR
+AU|7692024|دار أوبرا سيدني|Sydney Opera House|-
+NZ|268021|مضيق ميلفورد|Milford Sound|-
+PG|462840|مسار كوكودا|Kokoda Track|ID
+FJ|18274|جزر مامانوكا|Mamanuca Islands|-
+WS|2842|خندق تو سوا المحيطي|To Sua Ocean Trench|-
+TO|747|نصب هاامونغا آ ماوي|Ha'amonga 'a Maui|-
+VU|12189|بركان ياسور|Mount Yasur|-
+SB|28896|بحيرة ماروفو|Marovo Lagoon|-
+KI|811|محمية جزر فينيكس|Phoenix Islands Protected Area|-
+NR|21|خليج أنيباري|Anibare Bay|-
+TV|26|منطقة فونافوتي المحمية|Funafuti Conservation Area|-
+FM|702|ناين مادول|Nan Madol|-
+PW|459|جزر الصخور|Rock Islands|-
+MH|181|جزيرة بيكيني المرجانية|Bikini Atoll|-`).trim().split("\n").forEach(function (l) {
+  var p = l.split("|");
+  INFO[p[0]] = { area: parseFloat(p[1]), lmAr: p[2], lmEn: p[3], nb: p[4] === "-" ? [] : p[4].split(",") };
+});
 var NO_CAP_QUIZ = { BO: 1 };
 
 /* ---------- Normalizing and matching ---------- */
@@ -874,6 +1086,10 @@ function buildChips() {
 document.getElementById("q").addEventListener("input", function (e) { state.q = canon(e.target.value.trim()); render(); });
 document.getElementById("sort").addEventListener("change", function (e) { state.sort = e.target.value; render(); });
 
+function fmtArea(n) {
+  try { return n < 10 ? n.toLocaleString(lang === "ar" ? "ar-EG-u-nu-latn" : "en-US", { maximumFractionDigits: 2 }) : Math.round(n).toLocaleString(lang === "ar" ? "ar-EG-u-nu-latn" : "en-US"); } catch (e) { return String(n); }
+}
+function fmtScore(n) { return n % 1 ? n.toFixed(1) : String(n); }
 function field(label, value, cls, wide) {
   var d = el("div", wide ? "wide" : "");
   d.appendChild(el("dt", "", label));
@@ -950,6 +1166,13 @@ function render() {
     dl.appendChild(field(t("lLang"), lang === "ar" ? d.lang : trLang(d.lang)));
     dl.appendChild(field(t("lCur"), lang === "ar" ? d.cur : trCur(d.cur)));
     dl.appendChild(field(t("lFrom"), lang === "ar" ? d.from : trFrom(d.from), "who", true));
+    var inf = INFO[d.iso];
+    if (inf) {
+      dl.appendChild(field(t("lArea"), fmtArea(inf.area) + " " + t("kmUnit")));
+      dl.appendChild(field(t("lLandmark"), lang === "ar" ? inf.lmAr : inf.lmEn));
+      var nbn = inf.nb.map(function (c) { var x = DATA.filter(function (z) { return z.iso === c; })[0]; return x ? nameOf(x) : ""; }).filter(Boolean);
+      dl.appendChild(field(t("lNeighbors"), nbn.length ? nbn.join(lang === "ar" ? "، " : ", ") : t("noNeighbors"), "", true));
+    }
     card.appendChild(dl);
     frag.appendChild(card);
   });
@@ -966,12 +1189,79 @@ function recSet(k, v) { try { localStorage.setItem("rec-" + k, JSON.stringify(v)
 function bestGet(key) { try { return parseInt(localStorage.getItem("best-" + key), 10) || 0; } catch (e) { return 0; } }
 function bestSet(key, v) { try { localStorage.setItem("best-" + key, String(v)); } catch (e) {} }
 
+/* ---------- Sound and vibration ---------- */
+var SFX = (function () {
+  function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  var st = { sound: get("sfx") !== "0", vib: get("vib") !== "0" }, ctx = null;
+  function ac() {
+    try { ctx = ctx || new (window.AudioContext || window.webkitAudioContext)(); if (ctx.state === "suspended") ctx.resume(); } catch (e) { ctx = null; }
+    return ctx;
+  }
+  function tone(f, at, dur, type, vol) {
+    var c = ac(); if (!c) return;
+    var o = c.createOscillator(), g = c.createGain(), s = c.currentTime + at;
+    o.type = type || "sine"; o.frequency.value = f;
+    g.gain.setValueAtTime(0.0001, s); g.gain.exponentialRampToValueAtTime(vol || 0.16, s + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, s + dur);
+    o.connect(g); g.connect(c.destination); o.start(s); o.stop(s + dur + 0.05);
+  }
+  function buzz(p) { if (st.vib && navigator.vibrate) { try { navigator.vibrate(p); } catch (e) {} } }
+  function play(kind) {
+    if (st.sound) {
+      if (kind === "ok") { tone(660, 0, 0.14); tone(880, 0.1, 0.2); }
+      else if (kind === "bad") { tone(230, 0, 0.22, "triangle", 0.2); tone(170, 0.15, 0.3, "triangle", 0.2); }
+      else if (kind === "done") { [523, 659, 784].forEach(function (f, i) { tone(f, i * 0.12, 0.22); }); }
+      else if (kind === "record") { [523, 659, 784, 1047].forEach(function (f, i) { tone(f, i * 0.12, 0.3); }); }
+    }
+    if (kind === "ok") buzz(25); else if (kind === "bad") buzz([60, 40, 60]); else if (kind === "record") buzz([40, 40, 40, 40, 120]);
+  }
+  function set(k, v) { st[k] = v; try { localStorage.setItem(k === "sound" ? "sfx" : "vib", v ? "1" : "0"); } catch (e) {} }
+  return { play: play, state: st, set: set };
+})();
+
+/* ---------- Mistakes (per quiz) and day streak ---------- */
+function missLoad() { try { var m = JSON.parse(localStorage.getItem("miss-v1")); if (m && typeof m === "object") return m; } catch (e) {} return {}; }
+function missMark(kind, iso, ok) {
+  var m = missLoad(); m[kind] = m[kind] || {};
+  if (ok) { if (!m[kind][iso]) return; delete m[kind][iso]; } else m[kind][iso] = 1;
+  try { localStorage.setItem("miss-v1", JSON.stringify(m)); } catch (e) {}
+}
+function missUnion() { var m = missLoad(), u = {}; for (var k in m) for (var c in m[k]) u[c] = 1; return u; }
+function todayKey() { var d = new Date(); function p2(x) { return (x < 10 ? "0" : "") + x; } return d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate()); }
+var STREAK = (function () {
+  function load() { try { var r = JSON.parse(localStorage.getItem("streak-v1")); if (r && r.last) return r; } catch (e) {} return { last: "", count: 0, best: 0 }; }
+  function prev(key) { var a = key.split("-"), d = new Date(+a[0], +a[1] - 1, +a[2] - 1); function p2(x) { return (x < 10 ? "0" : "") + x; } return d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate()); }
+  function current() { var r = load(), t0 = todayKey(); return r.last === t0 || r.last === prev(t0) ? r.count : 0; }
+  function best() { return load().best || 0; }
+  function mark(date) {
+    var r = load(); if (r.last === date) return;
+    r.count = r.last === prev(date) ? r.count + 1 : 1; r.best = Math.max(r.best || 0, r.count); r.last = date;
+    try { localStorage.setItem("streak-v1", JSON.stringify(r)); } catch (e) {}
+  }
+  return { current: current, best: best, mark: mark };
+})();
+function streakLine() {
+  var n = STREAK.current();
+  var p = el("p", "rec", n ? "🔥 " + t("streakDays", { n: n }) + (STREAK.best() > n ? " · " + t("streakBest", { n: STREAK.best() }) : "") : "🔥 " + t("streakStart"));
+  return p;
+}
+function hintLetter(text) {
+  var s = String(text || "").trim();
+  if (lang === "ar" && s.indexOf("ال") === 0 && s.length > 3) s = s.slice(2);
+  return s.charAt(0).toUpperCase();
+}
+
 function makeQuiz(root, cfg) {
   var S = { mode: "setup", g: "all", N: 0, qs: [], i: 0, score: 0, missed: [], cur: { done: false }, duel: false, names: ["", ""], p: 0, res: [] };
   function pname(i) { return (S.names[i] || "").trim() || t("player", { n: i + 1 }); }
 
-  function poolFor() { return S.g === "all" ? cfg.pool : cfg.pool.filter(function (d) { return d.c === S.g; }); }
+  function poolFor() {
+    if (S.g === "all") return cfg.pool;
+    if (S.g === "miss") { var u = missUnion(); return cfg.pool.filter(function (d) { return u[d.iso]; }); }
+    return cfg.pool.filter(function (d) { return d.c === S.g; });
+  }
   function recKey(n) { return cfg.key + (S.g === "all" ? "" : "-" + S.g) + "-" + n; }
+
+  function missCount() { var u = missUnion(); return cfg.pool.filter(function (d) { return u[d.iso]; }).length; }
 
   function renderSetup() {
     root.textContent = "";
@@ -995,9 +1285,10 @@ function makeQuiz(root, cfg) {
       card.appendChild(names);
       card.appendChild(el("p", "alt", t("duelRule")));
     }
+    if (S.g === "miss" && !poolFor().length) S.g = "all";
     card.appendChild(el("p", "qtext", t("whichCont")));
     var grow = el("div", "chips"); grow.style.justifyContent = "center"; grow.style.marginBottom = "14px";
-    [["all", t("all")], ["F", CONT.F[lang]], ["A", CONT.A[lang]], ["E", CONT.E[lang]], ["N", CONT.N[lang]], ["S", CONT.S[lang]], ["O", CONT.O[lang]]].forEach(function (x) {
+    [["all", t("all")], ["F", CONT.F[lang]], ["A", CONT.A[lang]], ["E", CONT.E[lang]], ["N", CONT.N[lang]], ["S", CONT.S[lang]], ["O", CONT.O[lang]]].concat(missCount() ? [["miss", t("missChip", { n: missCount() })]] : []).forEach(function (x) {
       var gb = el("button", "chip", x[1]); gb.type = "button";
       gb.setAttribute("aria-pressed", S.g === x[0] ? "true" : "false");
       gb.addEventListener("click", function () { S.g = x[0]; renderSetup(); });
@@ -1005,6 +1296,7 @@ function makeQuiz(root, cfg) {
     });
     card.appendChild(grow);
     var gpool = poolFor();
+    if (S.g === "miss") card.appendChild(el("p", "lbnote", t("missInfo")));
     card.appendChild(el("p", "qtext", t("howMany")));
     var opts = el("div", "opts");
     var sizes = [10, 20, gpool.length].filter(function (n, i, a) { return n <= gpool.length && a.indexOf(n) === i; });
@@ -1018,9 +1310,9 @@ function makeQuiz(root, cfg) {
     var recLines = [];
     sizes.forEach(function (n, idx) {
       var r = recGet(recKey(n));
-      if (r) recLines.push((n === gpool.length ? t("allN", { n: n }) : nCount(n)) + ": " + r.score + " / " + n + " — " + fmtTime(r.time, true));
+      if (r) recLines.push((n === gpool.length ? t("allN", { n: n }) : nCount(n)) + ": " + fmtScore(r.score) + " / " + n + " — " + fmtTime(r.time, true));
     });
-    if (recLines.length && !S.duel) {
+    if (recLines.length && !S.duel && S.g !== "miss") {
       card.appendChild(el("p", "misshead", t("yourBest")));
       var rul = el("ul", "miss");
       recLines.forEach(function (l) { rul.appendChild(el("li", "", l)); });
@@ -1042,7 +1334,7 @@ function makeQuiz(root, cfg) {
   function start(n) {
     S.N = n; S.qs = shuffle(poolFor().slice()).slice(0, n);
     S.i = 0; S.score = 0; S.missed = []; S.cur = { done: false }; S.mode = "q";
-    S.t0 = Date.now(); S.endAt = null; S.rec = null; S.p = 0; S.res = []; startTick();
+    S.t0 = Date.now(); S.endAt = null; S.rec = null; S.fx = false; S.p = 0; S.res = []; startTick();
     renderQ();
   }
 
@@ -1054,7 +1346,7 @@ function makeQuiz(root, cfg) {
     var top = el("div", "qtop");
     top.appendChild(el("span", "", t("qOf", { i: S.i + 1, n: S.N })));
     top.appendChild(el("span", "qtimer", fmtTime(Date.now() - S.t0)));
-    top.appendChild(el("span", "", t("points") + ": " + S.score + " / " + S.N));
+    top.appendChild(el("span", "", t("points") + ": " + fmtScore(S.score) + " / " + S.N));
     root.appendChild(top);
     var bar = el("div", "bar"), fill = el("i");
     fill.style.width = ((S.i + (S.cur.done ? 1 : 0)) / S.N * 100) + "%";
@@ -1069,6 +1361,7 @@ function makeQuiz(root, cfg) {
     input.setAttribute("autocomplete", "off"); input.setAttribute("autocapitalize", "off"); input.setAttribute("spellcheck", "false");
     input.placeholder = t("answerPh"); input.setAttribute("aria-label", t("answerPh"));
     card.appendChild(input);
+    if (S.cur.hint) card.appendChild(el("p", "alt", "💡 " + t("hintIs", { l: hintLetter(cfg.kind === "c" ? nameOf(d) : (lang === "ar" ? d.capShort : d.capEn)) })));
     var fb = el("p", "fb"); fb.setAttribute("aria-live", "polite");
     var row = el("div", "row");
 
@@ -1078,7 +1371,13 @@ function makeQuiz(root, cfg) {
       check.addEventListener("click", submit);
       skip.addEventListener("click", function () { answer(false, false, null); });
       input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); submit(); } });
-      row.appendChild(check); row.appendChild(skip);
+      row.appendChild(check);
+      if (!S.cur.hint) {
+        var hb = el("button", "btn ghost", t("hintBtn")); hb.type = "button";
+        hb.addEventListener("click", function () { S.cur.hint = true; renderQ(); });
+        row.appendChild(hb);
+      }
+      row.appendChild(skip);
     } else {
       input.value = S.cur.text || ""; input.disabled = true;
       input.className = "ans " + (S.cur.ok ? "good" : "bad");
@@ -1110,8 +1409,10 @@ function makeQuiz(root, cfg) {
       answer(r.ok, r.near, input.value.trim());
     }
     function answer(ok, near, text) {
-      S.cur = { done: true, ok: ok, near: !!near, text: text };
-      if (ok) S.score++; else S.missed.push(d);
+      var hinted = !!S.cur.hint;
+      S.cur = { done: true, ok: ok, near: !!near, text: text, hint: hinted };
+      if (ok) S.score += hinted ? 0.5 : 1; else S.missed.push(d);
+      missMark(cfg.key, d.iso, ok); SFX.play(ok ? "ok" : "bad");
       renderQ();
     }
   }
@@ -1125,6 +1426,7 @@ function makeQuiz(root, cfg) {
       M.begin(d, function (res) {
         S.cur = { done: true, ok: res.ok, tap: res.tap, skipped: res.skipped };
         if (res.ok) S.score++; else S.missed.push(d);
+        missMark(cfg.key, d.iso, res.ok); SFX.play(res.ok ? "ok" : "bad");
         renderQ();
       });
       var skip = el("button", "btn ghost", t("skip")); skip.type = "button";
@@ -1183,7 +1485,7 @@ function makeQuiz(root, cfg) {
     [a, b].forEach(function (r, k) {
       var c = el("div", w === k ? "win" : "");
       c.appendChild(el("b", "", pname(k)));
-      c.appendChild(el("div", "big", r.score + " / " + S.N));
+      c.appendChild(el("div", "big", fmtScore(r.score) + " / " + S.N));
       c.appendChild(el("div", "", t("time") + ": " + fmtTime(r.time, true)));
       vs.appendChild(c);
     });
@@ -1210,11 +1512,11 @@ function makeQuiz(root, cfg) {
     var answered = Math.min(S.i, S.N);
     var card = el("div", "qcard");
     card.appendChild(el("p", "qtext", t("done")));
-    card.appendChild(el("div", "score", S.score + " / " + answered));
+    card.appendChild(el("div", "score", fmtScore(S.score) + " / " + answered));
     var ratio = answered ? S.score / answered : 0;
     card.appendChild(el("p", "", ratio === 1 && answered ? t("perfect") : ratio >= 0.8 ? t("great") : ratio >= 0.5 ? t("good") : t("low")));
     card.appendChild(el("p", "", t("time") + ": " + fmtTime(S.elapsed, true)));
-    if (answered === S.N) {
+    if (answered === S.N && S.g !== "miss") {
       if (!S.rec) {
         var rk = recKey(S.N), prev = recGet(rk), kind = "none";
         if (!prev) kind = "first";
@@ -1225,8 +1527,9 @@ function makeQuiz(root, cfg) {
         S.rec = { kind: kind, best: best };
       }
       var rc = S.rec;
+      if (!S.fx) { S.fx = true; SFX.play(rc.kind !== "none" ? "record" : "done"); }
       if (rc.kind !== "none") card.appendChild(el("p", "rec", t(rc.kind === "first" ? "recFirst" : rc.kind === "score" ? "recScore" : "recTime")));
-      card.appendChild(el("p", "", t("best") + ": " + rc.best.score + " / " + S.N + " — " + fmtTime(rc.best.time, true)));
+      card.appendChild(el("p", "", t("best") + ": " + fmtScore(rc.best.score) + " / " + S.N + " — " + fmtTime(rc.best.time, true)));
       if (S.g === "all" && S.N === cfg.pool.length) lbNote(card, cfg.key + "-all", S.score, S.elapsed, S.N, cfg.key);
     }
     var again = el("button", "btn", t("again")); again.type = "button";
@@ -1882,7 +2185,7 @@ var LB = (function () {
           var li = el("li", "lbrow" + (e.id === uid ? " me" : ""));
           li.appendChild(el("span", "rk", i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : String(i + 1)));
           li.appendChild(el("span", "nm", e.n));
-          var sc = el("span", "sc", e.s + (e.m ? " / " + e.m : "")); sc.setAttribute("dir", "ltr"); sc.appendChild(el("small", "", fmtTime(e.t, true)));
+          var sc = el("span", "sc", fmtScore(e.s) + (e.m ? " / " + e.m : "")); sc.setAttribute("dir", "ltr"); sc.appendChild(el("small", "", fmtTime(e.t, true)));
           li.appendChild(sc); ul.appendChild(li);
         });
         list.appendChild(ul);
@@ -1908,7 +2211,7 @@ var daily = (function () {
   var root = document.getElementById("quiz-daily");
   var KEY = "daily-v1", NQ = 10, TOTAL = NQ * 3;
   var LEGACY = { "2026-11-26": ["VA", "BA", "LT", "LB", "MU", "NZ", "AM", "AT", "NI", "TT"] };
-  var mapV = MapView(), D = null, timer = 0;
+  var mapV = MapView(), D = null, timer = 0, fxDay = "";
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function dateKey() { var d = new Date(); return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
@@ -1963,11 +2266,12 @@ var daily = (function () {
   }
   function record(s, ok) {
     s.details[s.i][s.step] = ok ? 1 : 0;
-    if (ok) s.score++;
+    if (ok) s.score += s.ans && s.ans.hinted ? 0.5 : 1;
+    SFX.play(ok ? "ok" : "bad");
     save();
   }
   function advance(s) {
-    s.ans = null; s.step++;
+    s.ans = null; s.hint = false; s.step++;
     if (s.step > 2) { s.step = 0; s.i++; }
     if (s.i >= NQ) { s.done = true; s.time = Date.now() - s.t0; }
     save(); render();
@@ -1986,6 +2290,7 @@ var daily = (function () {
     card.appendChild(el("p", "qtext", t("dTitle")));
     card.appendChild(el("p", "alt", longDate()));
     card.appendChild(el("p", "", t("dRules")));
+    card.appendChild(streakLine());
     if (s.resume) card.appendChild(el("p", "fb bad", t("dResumeNote")));
     var b = el("button", "btn", s.resume ? t("dResume") : t("dStart")); b.type = "button";
     b.addEventListener("click", function () {
@@ -2003,7 +2308,7 @@ var daily = (function () {
     var top = el("div", "qtop");
     top.appendChild(el("span", "", t("qOf", { i: s.i + 1, n: NQ })));
     top.appendChild(el("span", "qtimer", fmtTime(Date.now() - s.t0)));
-    top.appendChild(el("span", "", t("points") + ": " + s.score + " / " + TOTAL));
+    top.appendChild(el("span", "", t("points") + ": " + fmtScore(s.score) + " / " + TOTAL));
     root.appendChild(top);
     var bar = el("div", "bar"), fill = el("i");
     fill.style.width = ((s.i * 3 + s.step + (s.ans ? 1 : 0)) / TOTAL * 100) + "%";
@@ -2031,6 +2336,7 @@ var daily = (function () {
     input.setAttribute("autocomplete", "off"); input.setAttribute("autocapitalize", "off"); input.setAttribute("spellcheck", "false");
     input.placeholder = t("answerPh"); input.setAttribute("aria-label", t("answerPh"));
     card.appendChild(input);
+    if (s.hint) card.appendChild(el("p", "alt", "💡 " + t("hintIs", { l: hintLetter(kind === "c" ? nameOf(d) : (lang === "ar" ? d.capShort : d.capEn)) })));
     var fb = el("p", "fb"); fb.setAttribute("aria-live", "polite");
     var row = el("div", "row");
     var answerTxt = kind === "c" ? both(d.ar, d.en) : both(d.capShort, d.capEn);
@@ -2040,7 +2346,13 @@ var daily = (function () {
       check.addEventListener("click", submit);
       skip.addEventListener("click", function () { finish(false, false, null); });
       input.addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); submit(); } });
-      row.appendChild(check); row.appendChild(skip);
+      row.appendChild(check);
+      if (!s.hint) {
+        var hb = el("button", "btn ghost", t("hintBtn")); hb.type = "button";
+        hb.addEventListener("click", function () { s.hint = true; save(); render(); });
+        row.appendChild(hb);
+      }
+      row.appendChild(skip);
       setTimeout(function () { input.focus(); }, 0);
     } else {
       input.value = s.ans.text || ""; input.disabled = true;
@@ -2060,7 +2372,7 @@ var daily = (function () {
       finish(r.ok, r.near, input.value.trim());
     }
     function finish(ok, near, text) {
-      s.ans = { ok: ok, near: !!near, text: text };
+      s.ans = { ok: ok, near: !!near, text: text, hinted: !!s.hint };
       record(s, ok); render();
     }
   }
@@ -2098,10 +2410,13 @@ var daily = (function () {
     var card = el("div", "qcard");
     card.appendChild(el("p", "qtext", t("dDone")));
     card.appendChild(el("p", "alt", longDate()));
-    card.appendChild(el("div", "score", s.score + " / " + TOTAL));
+    STREAK.mark(s.date);
+    if (fxDay !== s.date) { fxDay = s.date; SFX.play("done"); }
+    card.appendChild(el("div", "score", fmtScore(s.score) + " / " + TOTAL));
     var ratio = s.score / TOTAL;
     card.appendChild(el("p", "", ratio === 1 ? t("perfect") : ratio >= 0.8 ? t("great") : ratio >= 0.5 ? t("good") : t("low")));
     card.appendChild(el("p", "", t("time") + ": " + fmtTime(s.time, true)));
+    card.appendChild(streakLine());
     lbNote(card, "daily-" + s.date, s.score, s.time, TOTAL, "daily");
     var cd = el("p", "rec");
     card.appendChild(cd);
@@ -2168,14 +2483,36 @@ function applyTheme() {
   var dark = themeMode === "dark" || (themeMode === "auto" && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
   var meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute("content", dark ? "#090F1C" : "#F3EFE6");
-  var b = document.getElementById("themebtn");
-  if (b) { b.innerHTML = THEME_ICON[themeMode]; var lbl = t("theme" + themeMode.charAt(0).toUpperCase() + themeMode.slice(1)); b.setAttribute("aria-label", lbl); b.title = lbl; }
+  var b = document.getElementById("setbtn");
+  if (b) { b.title = t("setTitle"); b.setAttribute("aria-label", t("setTitle")); }
 }
-document.getElementById("themebtn").addEventListener("click", function () {
-  themeMode = themeMode === "dark" ? "light" : themeMode === "light" ? "auto" : "dark";
-  try { localStorage.setItem("theme", themeMode); } catch (e) {}
-  applyTheme();
-});
+function openSettings() {
+  var mask = document.getElementById("lbmask");
+  mask.hidden = false; mask.textContent = "";
+  mask.onclick = function (e) { if (e.target === mask) { mask.hidden = true; mask.textContent = ""; } };
+  var sheet = el("div", "lbsheet"); sheet.setAttribute("role", "dialog"); sheet.setAttribute("aria-modal", "true");
+  var head = el("div", "lbhead"); head.appendChild(el("h2", "", t("setTitle")));
+  var x = el("button", "lbx", "✕"); x.type = "button"; x.setAttribute("aria-label", t("close"));
+  x.addEventListener("click", function () { mask.hidden = true; mask.textContent = ""; });
+  head.appendChild(x); sheet.appendChild(head);
+  function group(title, opts, current, onPick) {
+    sheet.appendChild(el("p", "misshead", title));
+    var row = el("div", "chips");
+    opts.forEach(function (o) {
+      var b = el("button", "chip", o[1]); b.type = "button"; b.setAttribute("aria-pressed", current === o[0] ? "true" : "false");
+      b.addEventListener("click", function () { onPick(o[0]); openSettings(); });
+      row.appendChild(b);
+    });
+    sheet.appendChild(row);
+  }
+  group(t("setTheme"), [["dark", t("thDark")], ["light", t("thLight")], ["auto", t("thAuto")]], themeMode, function (v) {
+    themeMode = v; try { localStorage.setItem("theme", v); } catch (e) {} applyTheme();
+  });
+  group(t("setSound"), [[true, t("on")], [false, t("off")]], SFX.state.sound, function (v) { SFX.set("sound", v); if (v) SFX.play("ok"); });
+  group(t("setVib"), [[true, t("on")], [false, t("off")]], SFX.state.vib, function (v) { SFX.set("vib", v); if (v) SFX.play("ok"); });
+  mask.appendChild(sheet);
+}
+document.getElementById("setbtn").addEventListener("click", openSettings);
 document.getElementById("langbtn").addEventListener("click", function () {
   lang = lang === "ar" ? "en" : "ar";
   try { localStorage.setItem("lang", lang); } catch (e) {}
