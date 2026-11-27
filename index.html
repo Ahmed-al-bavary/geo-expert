@@ -283,7 +283,7 @@ var RAW = `
 سوريا|Syria|دمشق|Damascus|23.2|1946|فرنسا|A|SY|العربية|الليرة السورية|ar
 لبنان|Lebanon|بيروت|Beirut|5.4|1943|فرنسا|A|LB|العربية|الليرة اللبنانية|ar
 الأردن|Jordan|عمّان|Amman|11.3|1946|بريطانيا|A|JO|العربية|الدينار الأردني|ar
-فلسطين|Palestine|القدس|Jerusalem|5.5|1988|الانتداب البريطاني، ثم الاحتلال الإسرائيلي (إعلان الدولة 1988)|A|PS|العربية|الشيكل الإسرائيلي (متداول)|ar
+فلسطين|Palestine|القدس|Jerusalem|5.5|1988|الانتداب البريطاني، ثم الاحتلال الإسرائيلي (إعلان الدولة 1988)|A|PS|العربية|الجنيه الفلسطيني|ar
 تركيا|Türkiye|أنقرة|Ankara|85.6|1923|لم تُستعمر، قامت الجمهورية بعد الدولة العثمانية|A|TR|التركية|الليرة التركية|tr
 إيران|Iran|طهران|Tehran|89.2|0|لم تُستعمر|A|IR|الفارسية|الريال الإيراني|en
 أفغانستان|Afghanistan|كابول|Kabul|42.2|1919|بريطانيا|A|AF|البشتو والدرية|الأفغاني|en
@@ -433,7 +433,7 @@ var STR = {
     say: "انطق", sayLabel: "انطق اسم العاصمة",
     million: "مليون", aboutK: "نحو {n} ألف", aboutP: "نحو {n} نسمة",
     flagsQ: "أي دولة يمثّلها هذا العلم؟", capsQ: "ما عاصمة {name}؟",
-    howMany: "كم سؤالًا تريد؟", nC10: "{n} دول", nC: "{n} دولة", allN: "جميع الدول ({n})",
+    whichCont: "اختر القارة أو المنطقة", howMany: "كم سؤالًا تريد؟", nC10: "{n} دول", nC: "{n} دولة", allN: "جميع الدول ({n})",
     answerPh: "اكتب الإجابة بالعربية أو الإنجليزية", check: "تحقق", skip: "لا أعرف",
     next: "السؤال التالي", result: "عرض النتيجة", endNow: "إنهاء الاختبار الآن",
     correct: "إجابة صحيحة", wrong: "إجابة خاطئة", skipped: "تم التخطي", answerIs: "الإجابة الصحيحة", spellNote: "الكتابة الدقيقة",
@@ -468,7 +468,7 @@ var STR = {
     say: "Say it", sayLabel: "Pronounce the capital",
     million: "million", aboutK: "about {n} thousand", aboutP: "about {n} people",
     flagsQ: "Which country does this flag belong to?", capsQ: "What is the capital of {name}?",
-    howMany: "How many questions?", nC10: "{n} countries", nC: "{n} countries", allN: "All countries ({n})",
+    whichCont: "Choose a continent or region", howMany: "How many questions?", nC10: "{n} countries", nC: "{n} countries", allN: "All countries ({n})",
     answerPh: "Type your answer in English or Arabic", check: "Check", skip: "I don't know",
     next: "Next question", result: "See result", endNow: "End quiz now",
     correct: "Correct", wrong: "Wrong", skipped: "Skipped", answerIs: "Correct answer", spellNote: "Exact spelling",
@@ -500,7 +500,7 @@ function t(k, v) {
 }
 function nCount(n) { return lang === "ar" && n <= 10 ? t("nC10", { n: n }) : t("nC", { n: n }); }
 
-var CONT = { F: { ar: "أفريقيا", en: "Africa" }, A: { ar: "آسيا", en: "Asia" }, E: { ar: "أوروبا", en: "Europe" }, M: { ar: "الأمريكتان", en: "Americas" }, O: { ar: "أوقيانوسيا", en: "Oceania" } };
+var CONT = { F: { ar: "أفريقيا", en: "Africa" }, A: { ar: "آسيا", en: "Asia" }, E: { ar: "أوروبا", en: "Europe" }, N: { ar: "أمريكا الشمالية والوسطى", en: "North & Central America" }, S: { ar: "أمريكا اللاتينية", en: "Latin America" }, O: { ar: "أوقيانوسيا", en: "Oceania" } };
 var NO_CAP_QUIZ = { BO: 1 };
 
 /* ---------- Normalizing and matching ---------- */
@@ -596,7 +596,7 @@ var CUR_EN = mk({
   "البولا": "Botswana pula", "الراند": "South African rand", "اللوتي": "Lesotho loti", "الليلانجيني": "Swazi lilangeni", "الريال السعودي": "Saudi riyal",
   "الريال اليمني": "Yemeni rial", "الريال العماني": "Omani rial", "الدرهم الإماراتي": "UAE dirham", "الريال القطري": "Qatari riyal", "الدينار البحريني": "Bahraini dinar",
   "الدينار الكويتي": "Kuwaiti dinar", "الدينار العراقي": "Iraqi dinar", "الليرة السورية": "Syrian pound", "الليرة اللبنانية": "Lebanese pound",
-  "الدينار الأردني": "Jordanian dinar", "الشيكل الإسرائيلي (متداول)": "Israeli shekel (in circulation)", "الشيكل الجديد": "New Israeli shekel",
+  "الدينار الأردني": "Jordanian dinar", "الجنيه الفلسطيني": "Palestinian pound", "الشيكل الجديد": "New Israeli shekel",
   "الليرة التركية": "Turkish lira", "الريال الإيراني": "Iranian rial", "الأفغاني": "Afghan afghani", "الروبية الباكستانية": "Pakistani rupee",
   "الروبية الهندية": "Indian rupee", "التاكا": "Bangladeshi taka", "الروبية السريلانكية": "Sri Lankan rupee", "الروبية النيبالية": "Nepalese rupee",
   "النولترم": "Bhutanese ngultrum", "الروفية": "Maldivian rufiyaa", "الكيات": "Myanmar kyat", "البات": "Thai baht", "الكيب": "Lao kip",
@@ -688,9 +688,12 @@ function flagImg(d, cls, named) {
   img.src = FLAG_SRC[0](code);
   return img;
 }
+/* Latin America = South America (Colombia and Venezuela southwards); North and Central America (with the Caribbean) are one group. */
+var SOUTH_AM = { AR: 1, BO: 1, BR: 1, CL: 1, CO: 1, EC: 1, GY: 1, PY: 1, PE: 1, SR: 1, UY: 1, VE: 1 };
 var DATA = RAW.trim().split("\n").map(function (line) {
   var p = line.split("|");
   var d = { ar: p[0], en: p[1], cap: p[2], capEn: p[3], pop: parseFloat(p[4]), year: parseInt(p[5], 10), from: p[6], c: p[7], iso: p[8], lang: p[9], cur: p[10], code: p[11] };
+  if (d.c === "M") d.c = SOUTH_AM[d.iso] ? "S" : "N";
   d.capShort = d.cap.split(" (")[0];
   d.key = canon(d.ar + " " + d.en + " " + d.cap + " " + d.capEn);
   return d;
@@ -761,7 +764,7 @@ var canSpeak = "speechSynthesis" in window && typeof SpeechSynthesisUtterance !=
 
 function buildChips() {
   chipsEl.textContent = "";
-  [["all", t("all")], ["F", CONT.F[lang]], ["A", CONT.A[lang]], ["E", CONT.E[lang]], ["M", CONT.M[lang]], ["O", CONT.O[lang]]].forEach(function (x) {
+  [["all", t("all")], ["F", CONT.F[lang]], ["A", CONT.A[lang]], ["E", CONT.E[lang]], ["N", CONT.N[lang]], ["S", CONT.S[lang]], ["O", CONT.O[lang]]].forEach(function (x) {
     var b = el("button", "chip", x[1]);
     b.type = "button"; b.dataset.c = x[0];
     b.setAttribute("aria-pressed", x[0] === state.c ? "true" : "false");
@@ -869,8 +872,11 @@ function bestGet(key) { try { return parseInt(localStorage.getItem("best-" + key
 function bestSet(key, v) { try { localStorage.setItem("best-" + key, String(v)); } catch (e) {} }
 
 function makeQuiz(root, cfg) {
-  var S = { mode: "setup", N: 0, qs: [], i: 0, score: 0, missed: [], cur: { done: false }, duel: false, names: ["", ""], p: 0, res: [] };
+  var S = { mode: "setup", g: "all", N: 0, qs: [], i: 0, score: 0, missed: [], cur: { done: false }, duel: false, names: ["", ""], p: 0, res: [] };
   function pname(i) { return (S.names[i] || "").trim() || t("player", { n: i + 1 }); }
+
+  function poolFor() { return S.g === "all" ? cfg.pool : cfg.pool.filter(function (d) { return d.c === S.g; }); }
+  function recKey(n) { return cfg.key + (S.g === "all" ? "" : "-" + S.g) + "-" + n; }
 
   function renderSetup() {
     root.textContent = "";
@@ -894,11 +900,21 @@ function makeQuiz(root, cfg) {
       card.appendChild(names);
       card.appendChild(el("p", "alt", t("duelRule")));
     }
+    card.appendChild(el("p", "qtext", t("whichCont")));
+    var grow = el("div", "chips"); grow.style.justifyContent = "center"; grow.style.marginBottom = "14px";
+    [["all", t("all")], ["F", CONT.F[lang]], ["A", CONT.A[lang]], ["E", CONT.E[lang]], ["N", CONT.N[lang]], ["S", CONT.S[lang]], ["O", CONT.O[lang]]].forEach(function (x) {
+      var gb = el("button", "chip", x[1]); gb.type = "button";
+      gb.setAttribute("aria-pressed", S.g === x[0] ? "true" : "false");
+      gb.addEventListener("click", function () { S.g = x[0]; renderSetup(); });
+      grow.appendChild(gb);
+    });
+    card.appendChild(grow);
+    var gpool = poolFor();
     card.appendChild(el("p", "qtext", t("howMany")));
     var opts = el("div", "opts");
-    var sizes = [10, 20, cfg.pool.length];
+    var sizes = [10, 20, gpool.length].filter(function (n, i, a) { return n <= gpool.length && a.indexOf(n) === i; });
     sizes.forEach(function (n, idx) {
-      var b = el("button", "opt", idx === 2 ? t("allN", { n: n }) : nCount(n));
+      var b = el("button", "opt", n === gpool.length ? t("allN", { n: n }) : nCount(n));
       b.type = "button";
       b.addEventListener("click", function () { start(n); });
       opts.appendChild(b);
@@ -906,8 +922,8 @@ function makeQuiz(root, cfg) {
     card.appendChild(opts);
     var recLines = [];
     sizes.forEach(function (n, idx) {
-      var r = recGet(cfg.key + "-" + n);
-      if (r) recLines.push((idx === 2 ? t("allN", { n: n }) : nCount(n)) + ": " + r.score + " / " + n + " — " + fmtTime(r.time, true));
+      var r = recGet(recKey(n));
+      if (r) recLines.push((n === gpool.length ? t("allN", { n: n }) : nCount(n)) + ": " + r.score + " / " + n + " — " + fmtTime(r.time, true));
     });
     if (recLines.length && !S.duel) {
       card.appendChild(el("p", "misshead", t("yourBest")));
@@ -929,7 +945,7 @@ function makeQuiz(root, cfg) {
   }
 
   function start(n) {
-    S.N = n; S.qs = shuffle(cfg.pool.slice()).slice(0, n);
+    S.N = n; S.qs = shuffle(poolFor().slice()).slice(0, n);
     S.i = 0; S.score = 0; S.missed = []; S.cur = { done: false }; S.mode = "q";
     S.t0 = Date.now(); S.endAt = null; S.rec = null; S.p = 0; S.res = []; startTick();
     renderQ();
@@ -1105,7 +1121,7 @@ function makeQuiz(root, cfg) {
     card.appendChild(el("p", "", t("time") + ": " + fmtTime(S.elapsed, true)));
     if (answered === S.N) {
       if (!S.rec) {
-        var rk = cfg.key + "-" + S.N, prev = recGet(rk), kind = "none";
+        var rk = recKey(S.N), prev = recGet(rk), kind = "none";
         if (!prev) kind = "first";
         else if (S.score > prev.score) kind = "score";
         else if (S.score === prev.score && S.elapsed < prev.time) kind = "time";
