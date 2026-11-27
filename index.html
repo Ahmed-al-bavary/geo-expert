@@ -69,9 +69,27 @@ body {
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 main { max-width: 1100px; margin: 0 auto; position: relative; }
+.lbmask { position: fixed; inset: 0; z-index: 40; display: flex; align-items: flex-end; justify-content: center; background: rgba(5, 9, 18, .6); }
+.lbmask[hidden] { display: none; }
+.lbsheet { width: min(100%, 560px); max-height: 88vh; overflow-y: auto; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 24px 24px 0 0; padding: 18px 16px calc(20px + env(safe-area-inset-bottom, 0px)); box-shadow: var(--shadow); }
+.lbhead { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.lbhead h2 { margin: 0; font-family: var(--font-display); font-size: 1.25rem; }
+.lbx { width: 36px; height: 36px; cursor: pointer; color: var(--ink); background: var(--surface2); border: 1px solid var(--line); border-radius: 999px; font-size: 1.1rem; }
+.lbname { display: flex; gap: 8px; margin: 12px 0 4px; }
+.lbname input { flex: 1; min-width: 0; font: inherit; color: var(--ink); background: var(--surface2); border: 1px solid var(--line); border-radius: 14px; padding: 9px 14px; }
+.lbname .btn { padding: 9px 18px; }
+.lbnote { color: var(--muted); font-size: .85rem; margin: 6px 0; }
+.lbmsg { text-align: center; color: var(--muted); padding: 22px 8px; }
+.lbrows { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.lbrow { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 14px; background: var(--surface2); border: 1px solid var(--line); }
+.lbrow.me { border-color: var(--gold); background: var(--accent-soft); }
+.lbrow .rk { font-weight: 700; text-align: center; color: var(--gold); }
+.lbrow .nm { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.lbrow .sc { text-align: end; font-variant-numeric: tabular-nums; line-height: 1.3; }
+.lbrow .sc small { display: block; color: var(--muted); font-size: .78rem; }
 .bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; color: var(--gold); opacity: var(--bgop); }
 .bg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.tools { display: flex; gap: 8px; flex: none; align-items: center; }
+.tools { display: flex; gap: 6px; flex: none; align-items: center; }
 .themebtn { width: 38px; height: 38px; flex: none; display: grid; place-items: center; cursor: pointer; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow); padding: 0; }
 .themebtn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .themebtn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
@@ -79,11 +97,11 @@ main { max-width: 1100px; margin: 0 auto; position: relative; }
 .qcard::before { content: ""; position: absolute; z-index: -1; inset-block-start: 0; inset-inline-end: 0; width: 55%; height: 45%; pointer-events: none; color: var(--gold); opacity: .22;
   background-image: radial-gradient(currentColor 1.1px, transparent 1.6px); background-size: 12px 12px;
   -webkit-mask-image: radial-gradient(circle at 100% 0, #000, transparent 70%); mask-image: radial-gradient(circle at 100% 0, #000, transparent 70%); }
-h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em; font-size: clamp(1.7rem, 6vw, 2.4rem); margin: 0; text-wrap: balance; line-height: 1.25; }
+h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em; font-size: clamp(1.35rem, 5.6vw, 2.4rem); margin: 0; white-space: nowrap; line-height: 1.25; }
 .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
 .sub { color: var(--muted); margin: 6px 0 18px; font-size: .95rem; }
 button { font: inherit; }
-.langbtn { flex: none; cursor: pointer; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 16px; font-weight: 600; font-size: .9rem; box-shadow: var(--shadow); }
+.langbtn { flex: none; cursor: pointer; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-weight: 600; font-size: .85rem; box-shadow: var(--shadow); }
 .tabs { position: fixed; z-index: 20; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
   inset-inline: 0; margin-inline: auto; width: min(calc(100% - 24px), 520px);
   bottom: calc(10px + env(safe-area-inset-bottom, 0px));
@@ -191,7 +209,7 @@ dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; font-variant-numeric:
 .marks { display: flex; gap: 8px; flex: none; font-weight: 800; }
 .m1 { color: var(--good); }
 .m0 { color: var(--bad); }
-.brand { display: flex; align-items: center; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; }
 .logo { width: 48px; height: 48px; flex: none; }
 .fimg { display: block; height: auto; aspect-ratio: 4 / 3; object-fit: contain; border: 1px solid var(--line); border-radius: 4px; background: var(--surface2); }
 .flag .fimg { width: 64px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, .18); border: 0; }
@@ -201,6 +219,7 @@ dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; font-variant-numeric:
 .femoji.mini { font-size: 1.15rem; margin-inline-end: 8px; vertical-align: middle; }
 </style>
 
+<div class="lbmask" id="lbmask" hidden></div>
 <div class="bg" aria-hidden="true"><svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMin slice" fill="none" stroke="currentColor" stroke-linecap="round">
   <defs>
     <linearGradient id="fadeV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
@@ -239,6 +258,7 @@ dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; font-variant-numeric:
       <p class="sub" data-i18n="sub">معلومات الدول، واختبار للأعلام، واختبار للعواصم.</p>
     </div>
     <div class="tools">
+      <button class="themebtn" id="lbbtn" type="button"><svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4"/></svg></button>
       <button class="themebtn" id="themebtn" type="button"></button>
       <button class="langbtn" id="langbtn" type="button">English</button>
     </div>
@@ -486,6 +506,11 @@ var STR = {
   ar: {
     h1: "Geo Expert", sub: "معلومات الدول، واختبار للأعلام، واختبار للعواصم.",
     themeDark: "الوضع الداكن", themeLight: "الوضع الفاتح", themeAuto: "الوضع التلقائي (حسب الهاتف)",
+    lbTitle: "الترتيب العالمي", lbDaily: "اليوم", lbFlags: "الأعلام", lbCaps: "العواصم", lbMapB: "الخريطة",
+    lbName: "اسمك في الترتيب", lbSave: "حفظ", lbNameShort: "اكتب اسماً من حرفين على الأقل", lbLoading: "جارٍ التحميل…",
+    lbOff: "الترتيب العالمي غير مفعّل بعد.", lbFail: "تعذّر الاتصال بالترتيب. حاول لاحقاً.", lbEmpty: "لا توجد نتائج بعد. كن الأول!",
+    lbYourRank: "ترتيبك: {r} من {n}", lbNote: "يُحسب أفضل رقم لكل لاعب، والترتيب بالنتيجة ثم بالوقت الأقل. اليومي لهذا اليوم فقط، والباقي لاختبار جميع الدول.",
+    lbSent: "أُرسلت نتيجتك إلى الترتيب العالمي", lbNeedName: "اكتب اسمك في صفحة الترتيب لتُرسل نتيجتك", lbBtn: "عرض الترتيب", close: "إغلاق",
     navGuide: "الدليل", navDaily: "اليومي", navFlags: "الأعلام", navCaps: "العواصم", navMap: "الخريطة",
     tabGuide: "الدليل", tabFlags: "اختبار الأعلام", tabCaps: "اختبار العواصم",
     ph: "ابحث باسم الدولة أو العاصمة، بالعربية أو الإنجليزية",
@@ -523,6 +548,11 @@ var STR = {
   en: {
     h1: "Geo Expert", sub: "Facts about countries, a flag quiz and a capitals quiz.",
     themeDark: "Dark mode", themeLight: "Light mode", themeAuto: "Automatic (follows phone)",
+    lbTitle: "Global ranking", lbDaily: "Today", lbFlags: "Flags", lbCaps: "Capitals", lbMapB: "Map",
+    lbName: "Your name on the board", lbSave: "Save", lbNameShort: "Enter a name of at least 2 characters", lbLoading: "Loading…",
+    lbOff: "The global ranking isn't switched on yet.", lbFail: "Couldn't reach the ranking. Try again later.", lbEmpty: "No results yet. Be the first!",
+    lbYourRank: "Your rank: {r} of {n}", lbNote: "Only each player's best result counts; ranked by score, then by the fastest time. Daily is today only; the others are the all-countries quizzes.",
+    lbSent: "Your result was sent to the global ranking", lbNeedName: "Enter your name on the ranking page to send your result", lbBtn: "View ranking", close: "Close",
     navGuide: "Guide", navDaily: "Daily", navFlags: "Flags", navCaps: "Capitals", navMap: "Map",
     tabGuide: "Guide", tabFlags: "Flag quiz", tabCaps: "Capitals quiz",
     ph: "Search by country or capital, in Arabic or English",
@@ -1197,6 +1227,7 @@ function makeQuiz(root, cfg) {
       var rc = S.rec;
       if (rc.kind !== "none") card.appendChild(el("p", "rec", t(rc.kind === "first" ? "recFirst" : rc.kind === "score" ? "recScore" : "recTime")));
       card.appendChild(el("p", "", t("best") + ": " + rc.best.score + " / " + S.N + " — " + fmtTime(rc.best.time, true)));
+      if (S.g === "all" && S.N === cfg.pool.length) lbNote(card, cfg.key + "-all", S.score, S.elapsed, S.N, cfg.key);
     }
     var again = el("button", "btn", t("again")); again.type = "button";
     again.addEventListener("click", function () { S.mode = "setup"; renderSetup(); });
@@ -1738,6 +1769,141 @@ var quizMap = makeQuiz(document.getElementById("quiz-map"), {
 });
 
 /* ---------- Daily challenge ---------- */
+/* ---------- Global ranking (Firebase Realtime Database over REST) ----------
+   Paste your database URL between the quotes, e.g. "https://my-project-default-rtdb.firebaseio.com". Empty = ranking switched off. */
+var LB_URL = "https://geo-expert-497db-default-rtdb.firebaseio.com";
+var LB = (function () {
+  function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function put(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  var uid = get("lb-uid");
+  if (!uid) { uid = "p" + Date.now().toString(36) + Math.random().toString(36).slice(2, 10); put("lb-uid", uid); }
+  var name = get("lb-name") || "";
+  var pending = {}, mine = {};
+  try { pending = JSON.parse(get("lb-pending")) || {}; } catch (e) {}
+  try { mine = JSON.parse(get("lb-mine")) || {}; } catch (e) {}
+  var sent = {};
+  function enabled() { return !!LB_URL; }
+  function url(path) { return LB_URL.replace(/\/+$/, "") + "/lb/" + path + ".json"; }
+  function better(a, b) { return !b || typeof b.s !== "number" || a.s > b.s || (a.s === b.s && a.t < b.t); }
+  function req(method, path, body) {
+    var ctl = typeof AbortController === "function" ? new AbortController() : null;
+    var to = setTimeout(function () { if (ctl) ctl.abort(); }, 9000);
+    return fetch(url(path), { method: method, body: body ? JSON.stringify(body) : undefined, signal: ctl ? ctl.signal : undefined })
+      .then(function (r) { clearTimeout(to); if (!r.ok) throw new Error("http " + r.status); return r.json(); },
+            function (e) { clearTimeout(to); throw e; });
+  }
+  function savePending() { put("lb-pending", JSON.stringify(pending)); }
+  function flush() {
+    if (!enabled() || !name) return Promise.resolve(false);
+    var boards = Object.keys(pending);
+    return boards.reduce(function (chain, board) {
+      return chain.then(function () {
+        var q = pending[board];
+        return req("GET", board + "/" + uid).then(function (remote) {
+          if (better(q, remote)) return req("PUT", board + "/" + uid, { n: name, s: q.s, t: q.t, m: q.m, ts: Date.now() });
+          if (remote && remote.n !== name) return req("PATCH", board + "/" + uid, { n: name });
+        }).then(function () { delete pending[board]; mine[board] = 1; savePending(); put("lb-mine", JSON.stringify(mine)); });
+      });
+    }, Promise.resolve()).then(function () { return true; }, function () { return false; });
+  }
+  function submit(board, score, time, total) {
+    if (!enabled()) return "off";
+    var q = { s: score, t: time, m: total };
+    if (!sent[board] || better(q, sent[board])) {
+      sent[board] = q;
+      if (better(q, pending[board])) { pending[board] = q; savePending(); }
+    }
+    if (!name) return "needName";
+    flush();
+    return "sent";
+  }
+  function load(board) {
+    return req("GET", board).then(function (obj) {
+      var arr = [];
+      for (var k in (obj || {})) { var e = obj[k]; if (e && typeof e.s === "number") arr.push({ id: k, n: String(e.n || "?").slice(0, 20), s: e.s, t: e.t, m: e.m }); }
+      arr.sort(function (a, b) { return b.s - a.s || a.t - b.t; });
+      return arr;
+    });
+  }
+  function setName(n) {
+    name = n; put("lb-name", n);
+    var chain = Promise.resolve();
+    Object.keys(mine).forEach(function (b) { chain = chain.then(function () { return req("PATCH", b + "/" + uid, { n: n }); }).catch(function () {}); });
+    return chain.then(flush);
+  }
+  function dateKey() { var d = new Date(); function p2(x) { return (x < 10 ? "0" : "") + x; } return d.getFullYear() + "-" + p2(d.getMonth() + 1) + "-" + p2(d.getDate()); }
+  var cur = "daily";
+  function boardId(tab) { return tab === "daily" ? "daily-" + dateKey() : tab + "-all"; }
+  var mask = document.getElementById("lbmask");
+  function close() { mask.hidden = true; mask.textContent = ""; }
+  function open(tab) {
+    if (tab) cur = tab;
+    mask.hidden = false; mask.textContent = "";
+    var sheet = el("div", "lbsheet"); sheet.setAttribute("role", "dialog"); sheet.setAttribute("aria-modal", "true");
+    var head = el("div", "lbhead"); head.appendChild(el("h2", "", t("lbTitle")));
+    var x = el("button", "lbx", "✕"); x.type = "button"; x.setAttribute("aria-label", t("close")); x.addEventListener("click", close);
+    head.appendChild(x); sheet.appendChild(head);
+    mask.onclick = function (e) { if (e.target === mask) close(); };
+    if (!enabled()) { sheet.appendChild(el("p", "lbmsg", t("lbOff"))); mask.appendChild(sheet); return; }
+    var nr = el("div", "lbname"); var inp = el("input", ""); inp.type = "text"; inp.maxLength = 16; inp.value = name; inp.placeholder = t("lbName"); inp.setAttribute("aria-label", t("lbName"));
+    var sv = el("button", "btn", t("lbSave")); sv.type = "button";
+    nr.appendChild(inp); nr.appendChild(sv); sheet.appendChild(nr);
+    var info = el("p", "lbnote", ""); sheet.appendChild(info);
+    var chips = el("div", "chips"); chips.style.margin = "6px 0";
+    var list = el("div", ""); 
+    [["daily", t("lbDaily")], ["flags", t("lbFlags")], ["caps", t("lbCaps")], ["map", t("lbMapB")]].forEach(function (c) {
+      var b = el("button", "chip", c[1]); b.type = "button"; b.setAttribute("aria-pressed", cur === c[0] ? "true" : "false");
+      b.addEventListener("click", function () { cur = c[0]; Array.prototype.forEach.call(chips.children, function (z) { z.setAttribute("aria-pressed", z === b ? "true" : "false"); }); show(); });
+      chips.appendChild(b);
+    });
+    sheet.appendChild(chips); sheet.appendChild(list);
+    sheet.appendChild(el("p", "lbnote", t("lbNote")));
+    mask.appendChild(sheet);
+    function save() {
+      var v = inp.value.replace(/\s+/g, " ").trim();
+      if (v.length < 2) { info.textContent = t("lbNameShort"); info.style.color = "var(--bad)"; return; }
+      info.textContent = ""; sv.disabled = true;
+      setName(v).then(function () { sv.disabled = false; show(); });
+    }
+    sv.addEventListener("click", save);
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") save(); });
+    var token = 0;
+    function show() {
+      var my = ++token;
+      list.textContent = ""; list.appendChild(el("p", "lbmsg", t("lbLoading")));
+      (name ? flush() : Promise.resolve()).then(function () { return load(boardId(cur)); }).then(function (arr) {
+        if (my !== token) return;
+        list.textContent = "";
+        if (!arr.length) { list.appendChild(el("p", "lbmsg", t("lbEmpty"))); return; }
+        var ul = el("ol", "lbrows"), pos = -1;
+        arr.forEach(function (e, i) { if (e.id === uid) pos = i; });
+        if (pos >= 0) { list.appendChild(el("p", "rec", t("lbYourRank", { r: pos + 1, n: arr.length }))); }
+        arr.slice(0, 50).forEach(function (e, i) {
+          var li = el("li", "lbrow" + (e.id === uid ? " me" : ""));
+          li.appendChild(el("span", "rk", i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : String(i + 1)));
+          li.appendChild(el("span", "nm", e.n));
+          var sc = el("span", "sc", e.s + (e.m ? " / " + e.m : "")); sc.setAttribute("dir", "ltr"); sc.appendChild(el("small", "", fmtTime(e.t, true)));
+          li.appendChild(sc); ul.appendChild(li);
+        });
+        list.appendChild(ul);
+      }, function () { if (my === token) { list.textContent = ""; list.appendChild(el("p", "lbmsg", t("lbFail"))); } });
+    }
+    show();
+  }
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !mask.hidden) close(); });
+  document.getElementById("lbbtn").addEventListener("click", function () { open(); });
+  setTimeout(flush, 1500);
+  return { submit: submit, open: open, enabled: enabled, hasName: function () { return !!name; } };
+})();
+function lbNote(card, board, score, time, total, tab) {
+  if (!LB.enabled()) return;
+  var st = LB.submit(board, score, time, total);
+  card.appendChild(el("p", "alt", t(st === "needName" ? "lbNeedName" : "lbSent")));
+  var b = el("button", "btn ghost", t("lbBtn")); b.type = "button";
+  b.addEventListener("click", function () { LB.open(tab); });
+  var row = el("div", "row"); row.appendChild(b); card.appendChild(row);
+}
+
 var daily = (function () {
   var root = document.getElementById("quiz-daily");
   var KEY = "daily-v1", NQ = 10, TOTAL = NQ * 3;
@@ -1936,6 +2102,7 @@ var daily = (function () {
     var ratio = s.score / TOTAL;
     card.appendChild(el("p", "", ratio === 1 ? t("perfect") : ratio >= 0.8 ? t("great") : ratio >= 0.5 ? t("good") : t("low")));
     card.appendChild(el("p", "", t("time") + ": " + fmtTime(s.time, true)));
+    lbNote(card, "daily-" + s.date, s.score, s.time, TOTAL, "daily");
     var cd = el("p", "rec");
     card.appendChild(cd);
     function upd() {
@@ -1978,6 +2145,7 @@ function applyLang() {
   Array.prototype.forEach.call(document.querySelectorAll("[data-i18n-ph]"), function (n) { n.placeholder = t(n.getAttribute("data-i18n-ph")); });
   document.getElementById("langbtn").textContent = t("langBtn");
   applyTheme();
+  (function () { var b = document.getElementById("lbbtn"); b.title = t("lbTitle"); b.setAttribute("aria-label", t("lbTitle")); })();
   buildChips();
   render();
   quizFlags.rerender();
