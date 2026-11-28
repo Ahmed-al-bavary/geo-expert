@@ -71,6 +71,15 @@ body {
 main { max-width: 1100px; margin: 0 auto; position: relative; }
 .lbmask { position: fixed; inset: 0; z-index: 40; display: flex; align-items: flex-end; justify-content: center; background: rgba(5, 9, 18, .6); }
 .lbmask[hidden] { display: none; }
+.copts { display: grid; gap: 10px; margin: 14px 0 6px; text-align: start; }
+.copt { display: flex; align-items: center; gap: 12px; width: 100%; cursor: pointer; font: inherit; font-weight: 600; color: var(--ink); background: var(--surface2); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; text-align: start; position: relative; }
+.copt .fimg { width: 44px; flex: none; border-radius: 4px; }
+.copt .cn { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.copt .cv { flex: none; font-weight: 500; font-size: .85rem; color: var(--muted); text-align: end; font-variant-numeric: tabular-nums; }
+.copt .rkb { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; background: var(--accent); color: var(--accent-ink); }
+.copt.good { border-color: var(--good); background: var(--good-soft); }
+.copt.bad { border-color: var(--bad); background: var(--bad-soft); }
+.copt:disabled { cursor: default; opacity: 1; }
 .lbsheet { width: min(100%, 560px); max-height: 88vh; overflow-y: auto; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 24px 24px 0 0; padding: 18px 16px calc(20px + env(safe-area-inset-bottom, 0px)); box-shadow: var(--shadow); }
 .lbhead { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .lbhead h2 { margin: 0; font-family: var(--font-display); font-size: 1.25rem; }
@@ -102,12 +111,12 @@ h1 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.01em;
 .sub { color: var(--muted); margin: 6px 0 18px; font-size: .95rem; }
 button { font: inherit; }
 .langbtn { flex: none; cursor: pointer; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-weight: 600; font-size: .85rem; box-shadow: var(--shadow); }
-.tabs { position: fixed; z-index: 20; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+.tabs { position: fixed; z-index: 20; display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
   inset-inline: 0; margin-inline: auto; width: min(calc(100% - 24px), 520px);
   bottom: calc(10px + env(safe-area-inset-bottom, 0px));
   background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--line); border-radius: 22px; padding: 6px; box-shadow: var(--shadow); }
-.tab { min-width: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--muted); background: transparent; border: 0; border-radius: 16px; padding: 8px 2px 6px; font-weight: 500; font-size: .72rem; line-height: 1.2; transition: background .2s, color .2s; }
+.tab { min-width: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--muted); background: transparent; border: 0; border-radius: 16px; padding: 8px 2px 6px; font-weight: 500; font-size: .66rem; line-height: 1.2; transition: background .2s, color .2s; }
 .tab svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .tab span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
@@ -269,6 +278,7 @@ dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; font-variant-numeric:
     <button class="tab" role="tab" id="t-daily" data-p="daily" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16M12 13.2l1.1 2.2 2.4.3-1.8 1.7.5 2.4-2.2-1.2-2.2 1.2.5-2.4-1.8-1.7 2.4-.3z"/></svg><span data-i18n="navDaily"></span></button>
     <button class="tab" role="tab" id="t-flags" data-p="flags" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V4M6 5h11l-2 4 2 4H6"/></svg><span data-i18n="navFlags"></span></button>
     <button class="tab" role="tab" id="t-caps" data-p="caps" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span data-i18n="navCaps"></span></button>
+    <button class="tab" role="tab" id="t-cmp" data-p="cmp" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M7 20h10M5 7h14M5 7l-2.5 6a3 3 0 0 0 5 0zM19 7l-2.5 6a3 3 0 0 0 5 0z"/></svg><span data-i18n="navCmp"></span></button>
     <button class="tab" role="tab" id="t-map" data-p="map" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v13.5l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg><span data-i18n="navMap"></span></button>
   </nav>
 
@@ -293,6 +303,7 @@ dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; font-variant-numeric:
 
   <section id="p-flags" hidden><div class="quiz" id="quiz-flags"></div></section>
   <section id="p-caps" hidden><div class="quiz" id="quiz-caps"></div></section>
+  <section id="p-cmp" hidden><div class="quiz" id="quiz-cmp"></div></section>
   <section id="p-map" hidden><div class="quiz" id="quiz-map"></div></section>
   <section id="p-daily" hidden><div class="quiz" id="quiz-daily"></div></section>
 </main>
@@ -516,6 +527,11 @@ var STR = {
     missChip: "أخطائي ({n})", missInfo: "اختبار من الدول التي أخطأت فيها سابقاً، ولا يدخل في الأرقام القياسية أو الترتيب.",
     streakDays: "أيام متتالية: {n}", streakBest: "أفضل سلسلة: {n}", streakStart: "ابدأ سلسلتك اليوم!",
     setTitle: "الإعدادات", setTheme: "المظهر", setSound: "الأصوات", setVib: "الاهتزاز", thDark: "داكن", thLight: "فاتح", thAuto: "تلقائي", on: "تشغيل", off: "إيقاف",
+    navCmp: "مقارنة", cmpTopic: "اختر نوع الأسئلة", tpMix: "مزيج", tpArea: "المساحة", tpPop: "السكان", tpYear: "الاستقلال", tpBorder: "الحدود", tpRank: "ترتيب 3 دول",
+    qAreaMax: "أي دولة هي الأكبر مساحة؟", qAreaMin: "أي دولة هي الأصغر مساحة؟", qPopMax: "أي دولة هي الأكثر سكاناً؟", qPopMin: "أي دولة هي الأقل سكاناً؟",
+    qYearMin: "أي دولة نالت استقلالها أولاً (الأقدم)؟", qYearMax: "أي دولة نالت استقلالها أخيراً (الأحدث)؟", qBorder: "أي من هذه الدول تحدّ {name} براً؟",
+    qRankArea: "رتّب الدول من الأكبر مساحة إلى الأصغر، بالضغط عليها بالترتيب", qRankPop: "رتّب الدول من الأكثر سكاناً إلى الأقل، بالضغط عليها بالترتيب", qRankYear: "رتّب الدول من الأقدم استقلالاً إلى الأحدث، بالضغط عليها بالترتيب",
+    cmpReset: "إعادة الترتيب", cmpOrder: "الترتيب الصحيح", cmpBorders: "تحدّها", cmpNoBorder: "لا تحدّها", cmpRight: "إجابة صحيحة!", cmpWrong: "إجابة خاطئة",
     navGuide: "الدليل", navDaily: "اليومي", navFlags: "الأعلام", navCaps: "العواصم", navMap: "الخريطة",
     tabGuide: "الدليل", tabFlags: "اختبار الأعلام", tabCaps: "اختبار العواصم",
     ph: "ابحث باسم الدولة أو العاصمة، بالعربية أو الإنجليزية",
@@ -526,7 +542,7 @@ var STR = {
     say: "انطق", sayLabel: "انطق اسم العاصمة",
     million: "مليون", aboutK: "نحو {n} ألف", aboutP: "نحو {n} نسمة",
     flagsQ: "أي دولة يمثّلها هذا العلم؟", capsQ: "ما عاصمة {name}؟",
-    whichCont: "اختر القارة أو المنطقة", howMany: "كم سؤالًا تريد؟", nC10: "{n} دول", nC: "{n} دولة", allN: "جميع الدول ({n})",
+    whichCont: "اختر القارة أو المنطقة", howMany: "كم سؤالًا تريد؟", nC10: "{n} أسئلة", nC: "{n} سؤال", allN: "جميع الدول ({n})",
     answerPh: "اكتب الإجابة بالعربية أو الإنجليزية", check: "تحقق", skip: "لا أعرف",
     next: "السؤال التالي", result: "عرض النتيجة", endNow: "إنهاء الاختبار الآن",
     correct: "إجابة صحيحة", wrong: "إجابة خاطئة", skipped: "تم التخطي", answerIs: "الإجابة الصحيحة", spellNote: "الكتابة الدقيقة",
@@ -563,6 +579,11 @@ var STR = {
     missChip: "My mistakes ({n})", missInfo: "A quiz of the countries you got wrong before. It doesn't count towards records or the ranking.",
     streakDays: "Day streak: {n}", streakBest: "Best streak: {n}", streakStart: "Start your streak today!",
     setTitle: "Settings", setTheme: "Appearance", setSound: "Sounds", setVib: "Vibration", thDark: "Dark", thLight: "Light", thAuto: "Auto", on: "On", off: "Off",
+    navCmp: "Compare", cmpTopic: "Choose the question type", tpMix: "Mixed", tpArea: "Area", tpPop: "Population", tpYear: "Independence", tpBorder: "Borders", tpRank: "Rank 3 countries",
+    qAreaMax: "Which country has the largest area?", qAreaMin: "Which country has the smallest area?", qPopMax: "Which country has the most people?", qPopMin: "Which country has the fewest people?",
+    qYearMin: "Which country became independent first (the oldest)?", qYearMax: "Which country became independent most recently?", qBorder: "Which of these countries shares a land border with {name}?",
+    qRankArea: "Rank the countries from the largest area to the smallest by tapping them in order", qRankPop: "Rank the countries from the most people to the fewest by tapping them in order", qRankYear: "Rank the countries from the oldest independence to the newest by tapping them in order",
+    cmpReset: "Reset order", cmpOrder: "Correct order", cmpBorders: "Borders it", cmpNoBorder: "No border", cmpRight: "Correct!", cmpWrong: "Wrong",
     navGuide: "Guide", navDaily: "Daily", navFlags: "Flags", navCaps: "Capitals", navMap: "Map",
     tabGuide: "Guide", tabFlags: "Flag quiz", tabCaps: "Capitals quiz",
     ph: "Search by country or capital, in Arabic or English",
@@ -573,7 +594,7 @@ var STR = {
     say: "Say it", sayLabel: "Pronounce the capital",
     million: "million", aboutK: "about {n} thousand", aboutP: "about {n} people",
     flagsQ: "Which country does this flag belong to?", capsQ: "What is the capital of {name}?",
-    whichCont: "Choose a continent or region", howMany: "How many questions?", nC10: "{n} countries", nC: "{n} countries", allN: "All countries ({n})",
+    whichCont: "Choose a continent or region", howMany: "How many questions?", nC10: "{n} questions", nC: "{n} questions", allN: "All countries ({n})",
     answerPh: "Type your answer in English or Arabic", check: "Check", skip: "I don't know",
     next: "Next question", result: "See result", endNow: "End quiz now",
     correct: "Correct", wrong: "Wrong", skipped: "Skipped", answerIs: "Correct answer", spellNote: "Exact spelling",
@@ -1050,7 +1071,7 @@ function shuffle(a) {
 }
 
 /* ---------- Tabs ---------- */
-var PANELS = ["guide", "daily", "flags", "caps", "map"];
+var PANELS = ["guide", "daily", "flags", "caps", "cmp", "map"];
 Array.prototype.forEach.call(document.querySelectorAll(".tab"), function (tb) {
   tb.addEventListener("click", function () {
     PANELS.forEach(function (p) {
@@ -2451,6 +2472,235 @@ var daily = (function () {
   };
 })();
 
+/* ---------- Comparison quiz: pick, rank 3, borders ---------- */
+var cmp = (function () {
+  var root = document.getElementById("quiz-cmp");
+  var S = { mode: "setup", topic: "mix", g: "all", N: 10, qs: [], i: 0, score: 0, wrong: [], cur: { done: false }, used: {} };
+  var TOPICS = [["mix", "tpMix"], ["area", "tpArea"], ["pop", "tpPop"], ["year", "tpYear"], ["border", "tpBorder"], ["rank", "tpRank"]];
+  var M = {
+    area: { val: function (d) { return INFO[d.iso].area; }, fmt: function (d) { return fmtArea(INFO[d.iso].area) + " " + t("kmUnit"); }, big: true },
+    pop: { val: function (d) { return d.pop; }, fmt: function (d) { return fmtPop(d.pop); }, big: true },
+    year: { val: function (d) { return d.year; }, fmt: function (d) { return String(d.year); }, big: false, ok: function (d) { return d.year > 0; } }
+  };
+  var KINDS = {
+    area: [["pick", "area", "max"], ["pick", "area", "min"], ["rank", "area"]],
+    pop: [["pick", "pop", "max"], ["pick", "pop", "min"], ["rank", "pop"]],
+    year: [["pick", "year", "min"], ["pick", "year", "max"], ["rank", "year"]],
+    border: [["border"]],
+    rank: [["rank", "area"], ["rank", "pop"], ["rank", "year"]]
+  };
+  KINDS.mix = [].concat(KINDS.area, KINDS.pop, KINDS.year, KINDS.border, [["rank", "area"], ["rank", "pop"]]);
+  function pool() { return DATA.filter(function (d) { return S.g === "all" || d.c === S.g; }); }
+  function rnd(n) { return Math.floor(Math.random() * n); }
+  function distinctSet(metric, k) {
+    var m = M[metric], P = pool().filter(function (d) { return !m.ok || m.ok(d); });
+    if (P.length < k) return null;
+    for (var a = 0; a < 400; a++) {
+      var set = [];
+      while (set.length < k) { var d = P[rnd(P.length)]; if (set.indexOf(d) < 0) set.push(d); }
+      var v = set.map(m.val).sort(function (x, y) { return x - y; }), good = true;
+      for (var i = 1; i < v.length; i++) {
+        var gap = a < 300 ? (m.big ? v[i] >= v[i - 1] * 1.15 : v[i] - v[i - 1] >= 8) : (m.big ? v[i] > v[i - 1] * 1.02 : v[i] > v[i - 1]);
+        if (!gap) good = false;
+      }
+      if (good) return set;
+    }
+    return null;
+  }
+  function build() {
+    var list = KINDS[S.topic];
+    for (var tries = 0; tries < 60; tries++) {
+      var kd = list[rnd(list.length)], q = null;
+      if (kd[0] === "pick") {
+        var set = distinctSet(kd[1], 2 + rnd(3)); if (!set) continue;
+        var m = M[kd[1]], best = set[0];
+        set.forEach(function (d) { if (kd[2] === "max" ? m.val(d) > m.val(best) : m.val(d) < m.val(best)) best = d; });
+        q = { kind: "pick", metric: kd[1], dir: kd[2], items: set, answer: best, mark: [best] };
+      } else if (kd[0] === "rank") {
+        var set3 = distinctSet(kd[1], 3); if (!set3) continue;
+        var mm = M[kd[1]];
+        var order = set3.slice().sort(function (x, y) { return kd[1] === "year" ? mm.val(x) - mm.val(y) : mm.val(y) - mm.val(x); });
+        q = { kind: "rank", metric: kd[1], items: shuffle(set3.slice()), order: order, mark: set3 };
+      } else {
+        var subs = pool().filter(function (d) { return d.iso.indexOf("GB-") !== 0 && INFO[d.iso] && INFO[d.iso].nb.length; });
+        if (!subs.length) continue;
+        var s = subs[rnd(subs.length)], nbs = INFO[s.iso].nb, nd = DATA.filter(function (z) { return nbs.indexOf(z.iso) >= 0; });
+        if (!nd.length) continue;
+        var right = nd[rnd(nd.length)];
+        var far = DATA.filter(function (z) { return z !== s && nbs.indexOf(z.iso) < 0 && z.iso.indexOf("GB-") !== 0 && z.c === s.c; });
+        if (far.length < 3) far = DATA.filter(function (z) { return z !== s && nbs.indexOf(z.iso) < 0 && z.iso.indexOf("GB-") !== 0; });
+        far = shuffle(far.slice()).slice(0, 3);
+        q = { kind: "border", subject: s, items: shuffle([right].concat(far)), answer: right, nbs: nbs, mark: [s] };
+      }
+      var key = q.kind + (q.metric || "") + (q.dir || "") + (q.subject ? q.subject.iso : "") + q.items.map(function (d) { return d.iso; }).sort().join();
+      if (S.used[key]) continue;
+      S.used[key] = 1; return q;
+    }
+    return null;
+  }
+  function qText(q) {
+    if (q.kind === "border") return t("qBorder", { name: nameOf(q.subject) });
+    if (q.kind === "rank") return t("qRank" + q.metric.charAt(0).toUpperCase() + q.metric.slice(1));
+    return t("q" + q.metric.charAt(0).toUpperCase() + q.metric.slice(1) + q.dir.charAt(0).toUpperCase() + q.dir.slice(1));
+  }
+  function valOf(q, d) {
+    if (q.kind === "border") return q.nbs.indexOf(d.iso) >= 0 ? "✓ " + t("cmpBorders") : "✗ " + t("cmpNoBorder");
+    return M[q.metric].fmt(d);
+  }
+  var tick = 0;
+  function stopTick() { if (tick) { clearInterval(tick); tick = 0; } }
+  function recKey(n) { return "cmp-" + S.topic + (S.g === "all" ? "" : "-" + S.g) + "-" + n; }
+
+  function renderSetup() {
+    stopTick(); root.textContent = "";
+    var card = el("div", "qcard");
+    card.appendChild(el("p", "qtext", t("cmpTopic")));
+    var tr = el("div", "chips"); tr.style.justifyContent = "center"; tr.style.marginBottom = "14px";
+    TOPICS.forEach(function (x) {
+      var b = el("button", "chip", t(x[1])); b.type = "button"; b.setAttribute("aria-pressed", S.topic === x[0] ? "true" : "false");
+      b.addEventListener("click", function () { S.topic = x[0]; renderSetup(); }); tr.appendChild(b);
+    });
+    card.appendChild(tr);
+    card.appendChild(el("p", "qtext", t("whichCont")));
+    var gr = el("div", "chips"); gr.style.justifyContent = "center"; gr.style.marginBottom = "14px";
+    [["all", t("all")], ["F", CONT.F[lang]], ["A", CONT.A[lang]], ["E", CONT.E[lang]], ["N", CONT.N[lang]], ["S", CONT.S[lang]], ["O", CONT.O[lang]]].forEach(function (x) {
+      var b = el("button", "chip", x[1]); b.type = "button"; b.setAttribute("aria-pressed", S.g === x[0] ? "true" : "false");
+      b.addEventListener("click", function () { S.g = x[0]; renderSetup(); }); gr.appendChild(b);
+    });
+    card.appendChild(gr);
+    card.appendChild(el("p", "qtext", t("howMany")));
+    var opts = el("div", "opts"), lines = [];
+    [10, 20].forEach(function (n) {
+      var b = el("button", "opt", nCount(n)); b.type = "button"; b.addEventListener("click", function () { start(n); }); opts.appendChild(b);
+      var r = recGet(recKey(n)); if (r) lines.push(nCount(n) + ": " + fmtScore(r.score) + " / " + n + " — " + fmtTime(r.time, true));
+    });
+    card.appendChild(opts);
+    if (lines.length) {
+      card.appendChild(el("p", "misshead", t("yourBest")));
+      var ul = el("ul", "miss"); lines.forEach(function (l) { ul.appendChild(el("li", "", l)); }); card.appendChild(ul);
+    }
+    root.appendChild(card);
+  }
+  function start(n) {
+    S.used = {}; S.qs = [];
+    for (var i = 0; i < n; i++) { var q = build(); if (!q) { S.used = {}; q = build(); } if (q) S.qs.push(q); }
+    if (!S.qs.length) return;
+    S.N = S.qs.length; S.i = 0; S.score = 0; S.wrong = []; S.cur = { done: false }; S.mode = "q"; S.t0 = Date.now(); S.endAt = null; S.rec = null; S.fx = false;
+    stopTick();
+    tick = setInterval(function () { var e = root.querySelector(".qtimer"); if (e && S.mode === "q") e.textContent = fmtTime(Date.now() - S.t0); }, 250);
+    renderQ();
+  }
+  function finish(ok, picked) {
+    var q = S.qs[S.i];
+    S.cur = { done: true, ok: ok, picked: picked };
+    if (ok) S.score++;
+    else {
+      var ans = q.kind === "rank" ? q.order.map(nameOf).join(" › ") : nameOf(q.answer);
+      S.wrong.push(qText(q) + " — " + ans);
+    }
+    q.mark.forEach(function (d) { missMark("cmp", d.iso, ok); });
+    SFX.play(ok ? "ok" : "bad");
+    renderQ();
+  }
+  function renderQ() {
+    root.textContent = "";
+    var q = S.qs[S.i];
+    var top = el("div", "qtop");
+    top.appendChild(el("span", "", t("qOf", { i: S.i + 1, n: S.N })));
+    top.appendChild(el("span", "qtimer", fmtTime(Date.now() - S.t0)));
+    top.appendChild(el("span", "", t("points") + ": " + fmtScore(S.score) + " / " + S.N));
+    root.appendChild(top);
+    var bar = el("div", "bar"), fill = el("i"); fill.style.width = ((S.i + (S.cur.done ? 1 : 0)) / S.N * 100) + "%"; bar.appendChild(fill); root.appendChild(bar);
+    var card = el("div", "qcard");
+    card.appendChild(el("p", "qtext", qText(q)));
+    var box = el("div", "copts");
+    var picked = S.cur.picked || [];
+    q.items.forEach(function (d) {
+      var b = el("button", "copt"); b.type = "button";
+      var badge = null;
+      if (q.kind === "rank") {
+        var pos = q.order.indexOf(d), mine = picked.indexOf(d);
+        if (S.cur.done) badge = el("span", "rkb", String(pos + 1));
+        else if (mine >= 0) badge = el("span", "rkb", String(mine + 1));
+      }
+      if (badge) b.appendChild(badge);
+      b.appendChild(flagImg(d, "mini"));
+      b.appendChild(el("span", "cn", nameOf(d)));
+      if (S.cur.done) {
+        b.disabled = true;
+        b.appendChild(el("span", "cv", valOf(q, d)));
+        if (q.kind === "rank") b.classList.add(q.order.indexOf(d) === picked.indexOf(d) ? "good" : "bad");
+        else if (d === q.answer) b.classList.add("good");
+        else if (d === picked[0]) b.classList.add("bad");
+      } else if (q.kind === "rank") {
+        if (picked.indexOf(d) >= 0) b.disabled = true;
+        b.addEventListener("click", function () {
+          var np = picked.concat([d]); S.cur.picked = np;
+          if (np.length === 3) finish(np.every(function (x, i) { return x === q.order[i]; }), np); else renderQ();
+        });
+      } else {
+        b.addEventListener("click", function () { finish(d === q.answer, [d]); });
+      }
+      box.appendChild(b);
+    });
+    card.appendChild(box);
+    var fb = el("p", "fb"); fb.setAttribute("aria-live", "polite");
+    var row = el("div", "row");
+    if (S.cur.done) {
+      fb.textContent = S.cur.ok ? t("cmpRight") : t("cmpWrong") + (q.kind === "rank" ? " — " + t("cmpOrder") + ": " + q.order.map(nameOf).join(" › ") : "");
+      fb.className = "fb " + (S.cur.ok ? "good" : "bad");
+      var last = S.i === S.N - 1;
+      var nx = el("button", "btn", last ? t("result") : t("next")); nx.type = "button";
+      nx.addEventListener("click", function () { if (last) { S.i++; S.mode = "end"; renderEnd(); } else { S.i++; S.cur = { done: false }; renderQ(); } });
+      row.appendChild(nx); setTimeout(function () { nx.focus(); }, 0);
+    } else if (q.kind === "rank" && picked.length) {
+      var rs = el("button", "btn ghost", t("cmpReset")); rs.type = "button";
+      rs.addEventListener("click", function () { S.cur.picked = []; renderQ(); });
+      row.appendChild(rs);
+    }
+    card.appendChild(fb); card.appendChild(row);
+    var endb = el("button", "linkbtn", t("endNow")); endb.type = "button";
+    endb.addEventListener("click", function () { if (S.cur.done) S.i++; S.mode = "end"; renderEnd(); });
+    card.appendChild(endb);
+    root.appendChild(card);
+  }
+  function renderEnd() {
+    stopTick(); root.textContent = "";
+    if (S.endAt == null) S.endAt = Date.now();
+    var elapsed = S.endAt - S.t0, answered = Math.min(S.i, S.N);
+    var card = el("div", "qcard");
+    card.appendChild(el("p", "qtext", t("done")));
+    card.appendChild(el("div", "score", fmtScore(S.score) + " / " + answered));
+    var ratio = answered ? S.score / answered : 0;
+    card.appendChild(el("p", "", ratio === 1 && answered ? t("perfect") : ratio >= 0.8 ? t("great") : ratio >= 0.5 ? t("good") : t("low")));
+    card.appendChild(el("p", "", t("time") + ": " + fmtTime(elapsed, true)));
+    if (answered === S.N) {
+      if (!S.rec) {
+        var rk = recKey(S.N), prev = recGet(rk), kind = "none";
+        if (!prev) kind = "first"; else if (S.score > prev.score) kind = "score"; else if (S.score === prev.score && elapsed < prev.time) kind = "time";
+        var best = kind === "none" ? prev : { score: S.score, time: elapsed };
+        if (kind !== "none") recSet(rk, best);
+        S.rec = { kind: kind, best: best };
+      }
+      var rc = S.rec;
+      if (!S.fx) { S.fx = true; SFX.play(rc.kind !== "none" ? "record" : "done"); }
+      if (rc.kind !== "none") card.appendChild(el("p", "rec", t(rc.kind === "first" ? "recFirst" : rc.kind === "score" ? "recScore" : "recTime")));
+      card.appendChild(el("p", "", t("best") + ": " + fmtScore(rc.best.score) + " / " + S.N + " — " + fmtTime(rc.best.time, true)));
+    }
+    var again = el("button", "btn", t("again")); again.type = "button";
+    again.addEventListener("click", function () { S.mode = "setup"; renderSetup(); });
+    var w = el("div", "row"); w.appendChild(again); card.appendChild(w);
+    if (S.wrong.length) {
+      card.appendChild(el("p", "misshead", t("mistakes") + " (" + S.wrong.length + ")"));
+      var ul = el("ul", "miss"); S.wrong.forEach(function (l) { ul.appendChild(el("li", "", l)); }); card.appendChild(ul);
+    }
+    root.appendChild(card);
+  }
+  function rerender() { if (S.mode === "setup") renderSetup(); else if (S.mode === "q") renderQ(); else renderEnd(); }
+  renderSetup();
+  return { rerender: rerender };
+})();
+
 /* ---------- Apply language ---------- */
 function applyLang() {
   var root = document.documentElement;
@@ -2467,6 +2717,7 @@ function applyLang() {
   quizCaps.rerender();
   mapView.refresh();
   quizMap.rerender();
+  cmp.rerender();
   daily.rerender();
 }
 /* ---------- Theme: dark / light / auto, chosen inside the app and remembered ---------- */
